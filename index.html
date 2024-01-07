@@ -2,26 +2,112 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="widtd=device-widtd, initial-scale=1.0">
 	
 	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     	<title>Resume</title>
 
 	<style>
+		body {
+			margin: 0;
+			align-content: center;
+			background: rgb(2,0,36);
+			background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+		}
+
 		.container {
+			background-color: beige;
+			padding: 10px;
 			margin: 0 auto;
-			height: auto;
-			width: 300px;
+			margin-top: 5vw;
+			margin-bottom: 5vw;
+			width: 90vw;
+			border-radius: 20px;
+			box-shadow: 5px 5px 10px;
+			text-align: center;
+		}
+
+		.welcome {
+			font-family: monospace;
+			font-size: 30px;
+		}
+		
+		.who, #here{
+			font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+			color: rgb(51, 94, 151);
+			font-size: 12px;
+		}
+
+		a {
+			text-decoration: none;
+			font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+			color: rgb(51, 94, 151);
+		}
+
+		a:hover, #here:hover{
+			color: crimson;
+		}
+
+		.items {
+			width: 80vw;
+			align-items: center;
+			text-align: center;
+			background-color: beige;
+			margin: 0 auto;
+			border-spacing: 10px;
+			border-radius: 20px;
+			box-shadow: 5px 5px 10px;
+			color: black;
+		}
+
+		th {
+			font-family: monospace;
+			font-size: 30px;
+		}
+
+		td {
+			font-size: 20px;
+		}
+
+		img {
+			position: fixed;
+			width: 7vw;
+			height: 7vw;
+			bottom: 0px;
+			left: 0px;
 		}
 			
 	</style>
 </head>
 <body>
-   <div class="container">
-	<h1>Hi there! Please choose from the links below.</h1>
-	<a href="" /><a href="" />
-   </div>
+	<img src="sadcat.png">
+	<div class="container">
+		
+		<p class="welcome">Hi there! Please choose from the links below.</p>
+		<p class="who">(This is like an index of my project websites, check the repository <a id="here" href="https://github.com/EG-Jose/EG-Jose.github.io">here)</a></p>
+	</div>
+	
+	<table class="items">
+		<tr>
+			<th colspan="4">Websites</th>
+			<th colspan="1"></th>
+			<th colspan="2">Midterm Quiz</th>
+		</tr>
+		<tr>
+			<td><a href="https://eg-jose.github.io/Resume/" target="_blank">Resume</a></td>
+			<td><a href="https://eg-jose.github.io/Snake/" target="_blank">Snake</a></td>
+			<td><a href="https://eg-jose.github.io/Coffee Please/" target="_blank">Coffee Please</a></td>
+			<td><a href="https://eg-jose.github.io/Mobile Gitz/" target="_blank">Mobile Gitz</a></td>
+			<td><!--freespace--></td>
+			<td><a href="https://eg-jose.github.io/MQ/MQ1/JOSE_ERIC_GODWIN_MQ1.html" target="_blank">MQ1</a></td>
+			<td><a href="https://eg-jose.github.io/MQ/MQ2/JOSE, EG_MQ2.html" target="_blank">MQ2</a></td>
+		</tr>
+		<tr>
+			
+		</tr>
+	</table>
+   
     
 </body>
 </html>
