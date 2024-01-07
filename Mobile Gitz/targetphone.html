@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="topnav.css">
+    <link rel="stylesheet" type="text/css" href="headline.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+<script>
+    var prevScrollPos = window.pageYOffset;
+    
+    window.onscroll = function() {
+        var currentScrollPos = window.pageYOffset;
+        if (prevScrollPos > currentScrollPos) {
+            document.getElementById("myTopnav").style.top = "0";
+        } else {
+            document.getElementById("myTopnav").style.top = "-100px";
+        }
+        prevScrollPos = currentScrollPos;
+    }
+</script>
+<script>
+    tinymce.init({
+        selector: '#editor'
+    });
+</script>
+
+<STYLE>
+    label {
+        display: block;
+        margin: 10px 0;
+        }
+
+    input, textarea {
+        width: 100%;
+        padding: 8px;
+        margin: 5px 0;
+        box-sizing: border-box;
+        }
+
+    #editor {
+        margin-top: 20px;
+        height: 500px;
+        }
+    label.reviewTitle, #reviewTitle {
+        font-size: 3vw;
+    }
+</STYLE>
+
+</head>
+<body>
+    <div class="topnav-container">
+        <div class="topnav" id="myTopnav"><!--TOPNAV START-->
+            <div id="logoname"><img src="logo/MobileGitz.png"></div>
+            <a href="index.php" class="active">Home</a>
+            <a href="#contact">Contact</a>
+            <!--<a href="signup.html" class="signupbutton" style="float: right;" title="Sign Up/Login">
+            <i class="fa fa-user" style="font-size: 30px;"></i></a>-->
+            
+            <!--<a href="javascript:void(0);">      Icon this will be
+              <i class="fa fa-bars"> </i>
+            </a>-->
+        </div>
+        </div>
+
+<div class="front-page-container"><!--CONTAINER START-->
+
+    <div class="column small"><!--COLUMN SMALL START-->
+
+        <!--<div class="smallnewssection">
+            <h4 class="section-heading">Popular News</h4>
+            
+            <a href="targetPhone.html">
+            <div class="front-news-container-small">
+                <img src="images/PocoC65.jpg" alt="Phone News Image">
+                <div class="front-news-inside-text">Poco C65 is here with Helio G85, 6.74" 90Hz display</div>
+            </div></a>
+        
+            <a href="targetPhone.html">
+            <div class="front-news-container-small">
+                <img src="images/SamsungGalaxyS23Ultravs.GooglePixel8Pro.jpg" alt="Phone News Image">
+                <div class="front-news-inside-text">Samsung Galaxy S23 Ultra vs. Google Pixel 8 Pro</div>
+            </div></a>
+                
+            <a href="targetPhone.html">
+            <div class="front-news-container-small">
+                <img src="images/vivoWatch3.jpg" alt="Phone News Image">
+                <div class="front-news-inside-text">Vivo Watch 3 official teasers showcase design</div>
+            </div></a>
+                
+            <a href="targetPhone.html">
+            <div class="front-news-container-small">
+                <img src="images/samsung_brings_stable_one_ui_6_update_to_malaysia.jpg" alt="Phone News Image">
+                <div class="front-news-inside-text">Samsung bring stable One UI 6 update to Malaysia</div>
+            </div></a>
+        </div>-->
+
+    </div>
+
+    <div class="column large">
+
+        <div class="headline-container">
+            <div class="headline-container top"></div><!--just padding-->
+            <img src="images/mobilePhoneBackground.jpg" alt="Phone News Image"><!--BCAKGROUND IMAGE OF ARTICLE, SOMEONE FROM THE NEWS ARTICLE-->
+            <div class="headline-container-inside-text">Mobile Gitz</div><!--NAME OF ARTICLE-->
+            <div class="headline-container bottom"></div><!--just padding-->
+        </div>
+
+        <div class="newsDesc-container" id="unoimage">
+
+            <label for="reviewTitle">Review Title:</label>
+            <input type="text" id="reviewTitle" name="reviewTitle" placeholder="Enter the review title">
+                
+            <label for="reviewerName">Your Name:</label>
+            <input type="text" id="reviewerName" name="reviewerName" placeholder="Enter your name">
+
+        <div class="front-news-container-small">
+            <img src="images/mobilePhoneBackground.jpg" aria-placeholder="put image here"></div><!--PHONE IMAGE-->
+
+        <label for="reviewContent">Review Content:</label>
+        <div id="editor"></div>
+
+
+    </div>
+</div>
+
+<footer id="contact">
+    <p>&copy; 2023. All rights reserved.</p>
+    <table class="footer-info">
+        <tr>
+            <th><h3>Creators</h3></th>
+            <th></th>
+            <th><h3>Contact Us</h3></th>
+            <th></th>
+            <th><h3>Follow Us</h3></th>
+            <th></th>
+            <th>  
+                <button id="randomButton">Fun Button</button>
+
+                <script>
+                  const websites = [
+                    'https://puginarug.com/', 'https://alwaysjudgeabookbyitscover.com/', 'https://weirdorconfusing.com/', 
+                    'https://longdogechallenge.com/', 'https://checkbox.toys/scale/', 'https://optical.toys/', 
+                    'https://cursoreffects.com/', 'https://onesquareminesweeper.com/', 'http://doughnutkitten.com/',
+                    'https://mondrianandme.com/'
+                  ];
+              
+                  document.getElementById('randomButton').addEventListener('click', function() {
+                    const randomIndex = Math.floor(Math.random() * websites.length);
+                    
+                    const randomURL = websites[randomIndex];
+                    
+                    window.location.href = randomURL;   
+                  });
+                </script>
+            </th>
+        </tr>
+        <tr>
+            <td>Eric Godwin Jose</a></td>
+            <td></td>
+            <td>
+                <i class="fa fa-phone"> </i> 09123456789<br>
+                <i class="fa fa-envelope"> </i> rsomeone223@gmail.com
+            </td>
+            <td></td>
+            <td><a href="target.html" target="_black"><i class="fa fa-facebook" style="font-size: 30px;"> </i> Facebook</a></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Re Ambatang</a></td>
+            <td></td>
+            <td><i class="fa fa-phone"> </i> 09123456789</td>
+            <td></td>
+            <td><a href="target.html" target="_black"><i class="fa fa-facebook" style="font-size: 30px;"> </i> Facebook</a></td>
+            <td></td>
+        </tr>
+    </table>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,402 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+    width: 90%; /* Adjust this to your liking for smaller screens */
+    }
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    margin: 0px;
+    align-content: center;
+    position: relative;
+    background-color: rgb(211, 211, 211);
+}
+
+.front-page-container {
+    background-color: #f3f3f3;
+    padding-top: 0px;
+    display: flex;
+    max-width: 1060px;
+    margin: 0 auto;
+    flex-wrap: wrap
+}
+
+.column {
+    display: inline-block;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+.small {
+    width: 30%;
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+}
+
+.large {
+    width: 70%;
+    padding-left: 5px;
+    border-top: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+}
+
+/* ---------------------------------LEFT SIDE--------------------------------- */
+
+.phone-finder {
+    width: 100%;
+    height: 300px;
+    text-align: center;
+    margin-bottom: 3px;
+}
+
+.phone-finder th {
+    background: #949494;
+    padding: 10px;
+}
+
+.phone-finder td {
+    background-color: rgb(190, 190, 190);
+    color: #575757;
+    padding: 5px;
+    font-size: 15px;
+}
+
+.phone-finder a {
+    color: rgb(20, 20, 20);
+}
+
+.phone-finder td:hover a, .phone-finder th:hover a, .top-phones td:hover a, .top-phones th:hover a {
+    color: rgb(0, 160, 0);
+}
+
+/*=======================EXPERIMENTAL TABLE STYLE=======================*/
+
+.top-list {
+    max-width: 317px;
+}
+
+
+.xm1 {
+    translate: 0 20px;
+    width: 100%;
+    padding: 10px;
+    align-items: center;
+}
+
+.section-heading {
+    border-bottom: none;
+    border-bottom-color: currentcolor;
+    border-left: 10px solid;
+    border-left-color: currentcolor;
+    border-color: #d9d9d9;
+    padding: 5px 5px;
+    margin-bottom: 0;
+    margin-left: -10px;
+    width: 70%;
+    color: #777;
+    background: 0 0;
+    font: 400 20px Google-Oswald,Arial Narrow,Arial,sans-serif;
+    text-transform: uppercase;
+    margin: 0 0 0 -1px;
+    margin-top: 0px;
+    background: #fff;
+    z-index: -10;
+}
+
+.top-list nobr {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 192px;
+    display: block;
+}
+
+.xm1 {
+    padding-bottom: 50px;
+}
+
+.xm1 a {
+    font: 700 13px/18px Google-Oswald,Arial Narrow,Arial,sans-serif;
+    color: #444;
+}
+
+.xm1 p {
+    margin-top: -3px;
+    margin-left: 5px;
+}
+
+.xm1 p:hover {
+    color: red;
+}
+
+.xm1 tr {
+    border: 0;
+    vertical-align: baseline;
+    box-sizing: border-box;
+}
+
+.xm1 td {
+    border: 0;
+    border-bottom-width: 0px;
+    border-bottom-style: none;
+    border-bottom-color: currentcolor;
+    vertical-align: baseline;
+    box-sizing: border-box;
+}
+
+.xm1 thead {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+    box-sizing: border-box;
+    background: #a4c08d;
+    text-decoration: none;
+}
+
+.xm1 thead th {
+    padding: 3px 0;
+    font: 700 13px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.xm1 th {
+    text-align: left;
+    text-decoration: none;
+}
+
+.xm1 tbody th {
+    font: 700;
+    text-align: left;
+    text-decoration: none;
+}
+
+.xm1 tbody td {
+    font-weight: 700 13px;
+    text-align: right;
+    text-decoration: none;
+}
+
+.xm1 tbody td, .m1 tbody th {
+    padding: 5px 4px 5px 5px;
+}
+
+.xm1 tbody th a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    white-space: nowrap;
+}
+
+/* ---------------------------------RIGHT SIDE--------------------------------- */
+  
+@media screen and (max-width: 600px) {
+    .front-news-container, .front-news-container-small, .front-news-inside-text, .front-news-container:hover, .front-news-container-small:hover  {
+        width: 100%;
+        font-size: 1vw;
+    }
+}
+
+.front-news-container {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid grey;
+    height: 300px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: white;
+    font-size: 25px;
+    margin-bottom: 3px;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+    transition: all 0.1s ease;
+}
+
+.front-news-container-small {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid grey;
+    height: 147px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: white;
+    font-size: 20px;
+    margin-bottom: 4px;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+    transition: all 0.1s ease;
+}
+
+.front-news-inside-text {
+    position: absolute;
+    z-index: 1;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    background-color: rgba(36, 36, 36, 0.5);
+    padding: 5px;
+    color: white;
+}
+  
+.front-news-container img, .front-news-container-small img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.front-news-container:hover img {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+.front-news-container-small:hover img {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+/* ---------------------------------BELLOW BIG NEWS--------------------------------- */
+
+@media screen and (max-width: 600px) {
+    .newsDesc-container.newsDesc-container h1, .newsDesc, .newsDesc a , .newsDesc img, .newsDesc h2, .newsDesc p {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.newsDesc-container {
+    background-color: #ccc;
+    padding: 5px;
+    z-index: 200;
+}
+
+.newsDesc-container a {
+    color: rgb(48, 48, 48);
+    z-index: 100;
+}
+
+.newsDesc-container h1:hover a {
+    color: rgb(0, 160, 0);
+}
+
+.newsDesc-container h1 {
+    border-bottom: 1px solid black;
+    bottom: 5px;
+    width: 100%;
+}
+
+div.newsDesc, .newsDesc a {
+    background-color: #ebebeb;
+    float: left;
+    color: black;
+    display: grid; 
+    grid-template-columns: 1fr 2fr;
+    height: 170px;
+    width: 100%;
+    margin: 0px;
+    margin-bottom: 10px;
+    box-shadow: rgb(116, 116, 116) 2px 2px 5px;
+}
+
+.newsDesc a:hover {
+    box-shadow: rgb(116, 116, 116) 5px 5px 10px;
+}
+
+.newsDesc img {
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    object-fit: cover;
+}
+
+.newsDesc h2 {
+    font-size: 20px;
+    color: rgb(80, 80, 80);
+    font-weight: 400px;
+    padding: 10x;
+    padding-left: 15px;
+    text-align: left;
+}
+
+.newsDesc p {
+    font-size: 15px;
+    color: rgb(80, 80, 80);
+    font-weight: 400px;
+    text-align: left;
+}
+
+.newsDesc:hover h2 {
+    color: rgb(0, 160, 0);
+}
+
+.newsDesc:hover p {
+    color: black;
+}
+
+.morestories {
+    padding: 10px;
+    margin: 30px;
+    display: block; 
+    border: 1px solid;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 50px;
+    border-bottom-left-radius: 50px;
+}
+
+.morestories:hover {
+    box-shadow: 2px 2px 5px;
+}
+
+/* ---------------------------------BELOW-------------------------------------- */
+
+.below {
+    display: flex;
+    align-items: center;
+}
+
+/*------------------------------------SignUp Form--------------------------------*/
+
+.signupform-container {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0 auto;
+    padding: 100px;
+}
+
+.signupform {
+    color: rgb(48, 48, 48);
+    text-align: left;
+    background-color: #ccc;
+    margin: 0 auto;
+    width: auto;
+    height: auto;
+    padding: 10px;
+    box-shadow: rgb(116, 116, 116) 2px 2px 5px;
+}
+
+.openspacetable {
+    padding-left: 100px;
+}
+
+.xm2 input , #signupbtn{
+    border-radius: 20px;
+    height: 30px;
+    width: 200px;
+}
+
+.xm2 td {
+    margin-top: -10px;
+}
+
+.xm2 #signupbtn {
+    margin-top: -10px;
+}

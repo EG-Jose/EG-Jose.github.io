@@ -1,0 +1,226 @@
+@media screen and (max-width: 600px) {
+    .front-page-container {
+     flex-direction: column;
+     }
+     .column {
+         width: 100%;
+     }
+ }
+
+a {
+    text-decoration: none;
+}
+
+body {
+    margin: 0px;
+    align-content: center;
+    position: relative;
+    background-color: rgb(211, 211, 211);
+}
+
+footer {
+    width: 1060px;
+    margin: 0 auto;
+    background-color: #333;
+    color: white;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.footer-info a {
+    color: royalblue;
+}
+
+.footer-info td {
+    color: royalblue;
+    padding: 10px;
+    text-align: left;
+    text-decoration: none;
+}
+
+.front-page-container {
+    background-color: #f3f3f3;
+    padding-top: 0px;
+    display: flex;
+    max-width: 1060px;
+    margin: 0 auto;
+    flex-wrap: wrap
+}
+
+.column {
+    display: inline-block;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+.small {
+    width: 30%;
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+}
+
+.smallnewssection {
+    margin-top: 305px;
+}
+
+.section-heading {
+    border-bottom: none;
+    border-bottom-color: currentcolor;
+    border-left: 10px solid;
+    border-left-color: currentcolor;
+    border-color: #d9d9d9;
+    padding: 5px 5px;
+    margin-bottom: 0;
+    margin-top: -0px;
+    width: 80%;
+    color: rgb(0, 160, 0);
+    font: 300 20px Google-Oswald,Arial Narrow,Arial,sans-serif;
+    text-transform: uppercase;
+    margin: 0 0 0 -10px;
+    margin-top: 0px;
+    background: #fff;
+    z-index: -1;
+}
+
+.front-news-container-small {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid grey;
+    height: 147.5px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: white;
+    font-size: 20px;
+    margin-bottom: 10px;
+    margin: 5px;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+    transition: all 0.1s ease;
+}
+
+.large {
+    width: 70%;
+    padding-left: 5px;
+    border-top: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+}
+
+.front-news-container {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid grey;
+    height: 300px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: white;
+    font-size: 2vw;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+    transition: all 0.1s ease;
+}
+
+.front-news-container-small:hover img {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+.smallcontainertext {
+    font-family: Arial, Helvetica, sans-serif;
+    position: absolute;
+    z-index: 1;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    background-color: rgba(36, 36, 36, 0.5);
+    padding: 5px;
+    color: white;
+}
+
+.front-news-inside-text {
+    position: absolute;
+    z-index: 1;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    background-color: rgba(36, 36, 36, 0.5);
+    padding: 5px;
+    color: white;
+}
+  
+.front-news-container img, .front-news-container-small img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+table.listAllBrands {
+    font-family: Google-Oswald,Arimo,Arial;
+    width: 100%;
+    background-color: #ccc;
+    padding: 10px;
+}
+
+.listAllBrands td {
+    padding-left: 10px;
+}
+
+.listAllBrands h1 {
+    font-size: 50px;
+}
+
+.listAllBrands p {
+    font-size: 25px;
+    margin-top: -10px;
+}
+
+.listAllBrands a:hover {
+    color: rgb(0, 160, 0);
+    text-shadow: #757575 1px 1px 1px;
+}
+
+.listAllBrands a, .listAllBrands td, .listAllBrands p {
+    text-decoration: none;
+    text-align: left;
+    color: rgb(80, 80, 80);
+}
+.pbl {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.pbl .tablelist {
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+}
+
+.tablelist img {
+    width: 150px;
+    height: 150px;
+}
+
+.tablelist th {
+    padding: 10px;
+    border: #333;
+}
+
+.pageNumber {
+    height: 50px;
+}
+
+.pageNumber a {
+    font-size: 30px;
+    padding: 5px;
+    color: red;
+    transition: transform 0.5s ease-in;
+}
+
+.pageNumber a:hover {
+    color: rgb(0, 160, 0);
+    font-size: 35px;
+    text-shadow: 1px 1px 1px;
+}
+

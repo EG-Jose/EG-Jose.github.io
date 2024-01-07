@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="topnav.css">
+    <link rel="stylesheet" type="text/css" href="headline.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script>
+    var prevScrollPos = window.pageYOffset;
+    
+    window.onscroll = function() {
+        var currentScrollPos = window.pageYOffset;
+        if (prevScrollPos > currentScrollPos) {
+            document.getElementById("myTopnav").style.top = "0";
+        } else {
+            document.getElementById("myTopnav").style.top = "-100px";
+        }
+        prevScrollPos = currentScrollPos;
+    }
+</script>
+<script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js" defer></script>
+<script src="/js/validation.js" defer></script>
+
+<style>
+</style>
+
+</head>
+<body>
+    <div class="topnav-container">
+    <div class="topnav" id="myTopnav"><!--TOPNAV START-->
+        <div id="logoname"><img src="/logo/MobileGitz.png"></div>
+        <a href="/index.php">Home</a>
+        <!--<a href="signup.html" class="signupbutton" style="float: right;" title="Sign Up/Login">
+            <i class="fa fa-user" style="font-size: 30px;"></i></a>-->
+    </div>
+    </div>
+
+<div class="front-page-container">
+    <div class="signupform-container" action="/signup-validate.php" method="post" novalidate>
+        <table class="xm2 signupform" cellspacing="10px">
+            <tr>
+                <th><h1>Sign Up</h1></th>
+            </tr>
+            <tr>
+                <th class="signupth1a">First Name</th>
+                <th class="openspacetable"></th>
+                <th class="signupth1b">Last Name</th>
+            </tr>
+            <tr>
+                <td><input type="text" name="firstName" id="firstName" placeholder=""></td>
+                <td class="openspacetable"></td>
+                <td><input type="texts" name="lastName" id="lastName" placeholder=""></td>
+            </tr>
+            <tr><th style="padding-bottom: 20px;"></th></tr>
+            <tr>
+                <th class="signupth1c">User Name</th>
+                <th class="openspacetable"></th>
+                <th class="signupth1d">Email</th>
+            </tr>
+            <tr>
+                <td><input type="text" name="userName" id="userName" placeholder=""></td>
+                <td class="openspacetable"></td>
+                <td><input type="email" name="email" id="email" placeholder=""></td>
+            </tr>
+            <tr><th style="padding-bottom: 20px;"></th></tr>
+            <tr>
+                <th class="signupth1e">Password</th>
+            </tr>
+            <tr>
+                <td><input type="password" name="password" id="password"></td>
+            </tr>
+            <tr>
+                <td><input type="password" name="password_confirmation" id="password_confirmation"></td>
+                <th class="openspacetable"></th>
+                <td><button id="signupbtn">Sign Up</button></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<footer id="contact">
+    <p>&copy; 2023. All rights reserved.</p>
+    <table class="footer-info">
+        <tr>
+            <th><h3>Creators</h3></th>
+            <th></th>
+            <th><h3>Contact Us</h3></th>
+            <th></th>
+            <th><h3>Follow Us</h3></th>
+            <th></th>
+            <th>  
+                <button id="randomButton">Fun Button</button>
+
+                <script>
+                  const websites = [
+                    'https://puginarug.com/', 'https://alwaysjudgeabookbyitscover.com/', 'https://weirdorconfusing.com/', 
+                    'https://longdogechallenge.com/', 'https://checkbox.toys/scale/', 'https://optical.toys/', 
+                    'https://cursoreffects.com/', 'https://onesquareminesweeper.com/', 'http://doughnutkitten.com/',
+                    'https://mondrianandme.com/'
+                  ];
+              
+                  document.getElementById('randomButton').addEventListener('click', function() {
+                    const randomIndex = Math.floor(Math.random() * websites.length);
+                    
+                    const randomURL = websites[randomIndex];
+                    
+                    window.location.href = randomURL;   
+                  });
+                </script>
+            </th>
+        </tr>
+        <tr>
+            <td>Eric Godwin Jose</a></td>
+            <td></td>
+            <td>
+                <i class="fa fa-phone"> </i> 09123456789<br>
+                <i class="fa fa-envelope"> </i> rsomeone223@gmail.com
+            </td>
+            <td></td>
+            <td><a href="/target.html" target="_black"><i class="fa fa-facebook" style="font-size: 30px;"> </i> Facebook</a></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Re Ambatang</a></td>
+            <td></td>
+            <td><i class="fa fa-phone"> </i> 09123456789</td>
+            <td></td>
+            <td><a href="/target.html" target="_black"><i class="fa fa-facebook" style="font-size: 30px;"> </i> Facebook</a></td>
+            <td></td>
+        </tr>
+    </table>
+</footer>
+
+</body>
+</html>
