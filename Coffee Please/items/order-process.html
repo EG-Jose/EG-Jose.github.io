@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Please</title>
+
+    <script src="/js/responsivenav.js"></script>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <link rel="icon" type="image/x-icon" href="/images/coffeeIcon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Salsa&display=swap" rel="stylesheet"> 
+</head>
+
+<body class="order">
+    <div class="navbar" id="myNavbar">
+        <div class="logo"><p class="highlight">Coffee Please</p></div>
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../services.html">Services</a>
+        <a href="../owner.html">Contact</a>
+    </div>
+
+    <div class="item-order">
+        <form>
+            <table>
+                <tr>
+                    <td><label>Your Name:</label></td>
+                    <td><input type="text" required></td>
+                </tr>
+                <tr>
+                    <td>Method:</td>
+                    <td>
+                        <input type="radio">
+                        <label>Delivery</label>
+                        <input type="radio">
+                        <label>To Go</label>
+                        <input type="radio">
+                        <label>Reservation</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Size:</td>
+                    <td>
+                        <input type="radio">
+                        <label>Small</label>
+                        <input type="radio">
+                        <label for="size_medium">Medium</label>
+                        <input type="radio">
+                        <label>Large</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Extras:</label></td>
+                    <td>
+                        <select multiple>
+                            <option>Whipped Cream</option>
+                            <option>Extra Coffee Shot</option>
+                            <option>Vanilla Flavor</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><button>Place Order</button></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+</body>
+</html>

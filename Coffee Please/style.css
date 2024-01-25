@@ -1,0 +1,374 @@
+body {
+    font-family: 'Salsa', cursive;
+    margin: 0;
+    padding: 0;
+    background-repeat: no-repeat; 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+}
+
+body.index {
+    background-image: url('images/woman-pouring-coffee-cream.jpg');
+}
+
+body.about::before {
+    background-image: url('images/about_background.jpeg');
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center;
+    filter: blur(10px);
+    z-index: -1;
+}
+
+body.owner::before {
+    background-image: url('images/homePage.jpg');
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center;
+    filter: blur(10px);
+    z-index: -1;
+}
+
+body.services {
+    background-image: url('images/coffeeplacebackground.jpg');
+}
+
+body.order {
+    background-image: url('images/coffeeplacebackground.jpg');
+    height: 100vh;
+    display: block;
+}
+
+/*----------Footer----------*/
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    height: 50px;
+    position: relative;
+    clear: both;
+}
+
+a {
+    text-decoration: none;
+    color: #3498db;
+}
+
+/*----------NavBar----------*/
+
+.navbar {
+    background-color: #333;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar .logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    margin-left: 20px;
+    font-size: 1.2rem;
+}
+
+.nav-items {
+    display: flex;
+}
+
+.navbar a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 18px 20px;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 600px) {
+    .navbar a {display: none;}
+    .navbar a.icon {
+        float: right;
+        display: block;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .navbar.responsive {position: relative;}
+    .navbar.responsive .icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .navbar.responsive a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+}
+
+/*----------Order Page----------*/
+
+.items-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    background-color: #7a7a7a5b;
+}
+
+.item {
+    max-height: 70vh;
+    width: 20vw;
+    background-color: rgba(50, 50, 50, 0.90);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    margin: 10px;
+    text-align: center;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.item-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.item-content {
+    padding: 10px;
+    color: rgb(250, 250, 250);;
+}
+
+.item-btn {
+    background-color: #cfa92c;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px 0;
+    border: none;
+    cursor: pointer;
+    width: 80%;
+    border-radius: 5px;
+}
+
+.card-btn:hover {
+    background-color: #cfa92c; 
+}
+
+@media (max-width: 800px) {
+    .items-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 items per row on medium screens */
+    }
+}
+
+@media (max-width: 500px) {
+    .items-container {
+        grid-template-columns: 1fr; /* 1 item per row on small screens */
+    }
+}
+
+/*----------About----------*/
+
+.text-container {
+    display: flex;
+    max-width: 100vw;
+    padding-left: 100px;
+    padding-right: 100px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    background-color: #6a6a6a5b;
+}
+
+.column {
+    display: inline-block;
+    margin: 0px;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.small {
+    width: 50%;
+}
+
+.large {
+    width: 50%;
+}
+
+.small img {
+    width: 100%;
+    align-content: center;
+}
+
+.large h2 {
+    font-size: 50px;
+    color: rgb(250, 250, 250);
+}
+
+.large p {
+    font-size: 1.5rem;
+    color: rgb(220, 220, 220);
+}
+
+.highlight {
+    color: #cfa92c;
+    text-shadow: #cf372c 1px 1px 1px;
+}
+
+/*----------Owner/Contact----------*/
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    background-color: #7a7a7a5b;
+}
+
+.card {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    max-width: 400px;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.card img {
+    max-width: 100%;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    margin-bottom: 20px;
+}
+
+.card-text p.title {
+    font-size: 1.7rem;
+    font-weight: 800;
+}
+
+.card-text p {
+    font-size: 1.5rem;
+}
+
+.card-button {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.faicon {
+    font-size: 2rem;
+    padding: 10px;
+}
+
+/*----------Services----------*/
+
+.services-header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.services-header h1 {
+    font-size: 4rem;
+}
+
+.services-left {
+    display: flex;
+    align-items: center;
+    margin: 20px;
+    background-color: #5f594f;
+    border-radius: 10px;
+}
+
+.services-left img {
+    height: 350px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px 0 0 10px;
+    margin-right: 10vw;
+}
+
+.services-content {
+    flex-grow: 1;
+}
+
+.services-content h3 {
+    font-size: 3rem;
+    color: #e4ba30;
+    text-shadow: #a82d25 1px 1px 1px;
+}
+
+.services-content p {
+    font-size: 2rem;
+    text-shadow: #e4ba30 1px 1px 5px;
+}
+
+/*----------Order----------*/
+
+.item-order {
+    background: #5f594f;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    width: 40vw;
+    margin: 0 auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+table {
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+td {
+    padding: 20px;
+    vertical-align: top;
+}
+
+input[type="text"], select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
+
+button:hover {
+    background-color: #45a049;
+}

@@ -1,90 +1,65 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Owner</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="topnav.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Please | Contact</title>
 
-<div class="topnav">
-    <a class="top" href="index.html">Go Back</a><br><br><br>
-</div>
-
-<style>
-body {
-    margin: 0px;
-    font-family: sans-serif;
-    background-image: url('images/homePage.jpg'); 
-    background-repeat: no-repeat; 
-    background-size: cover;
-}
-    
-div.scroll {
-    margin: 0 auto;
-    width: 1060px;
-    overflow-x: hidden;
-    overflow-y: auto;
-    text-align: center;
-}
-    
-.card {
-    background-color: aliceblue;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    padding: 10px;
-    max-width: 300px;
-    margin: auto;
-    text-align: center;
-}
-
-.card img {
-    margin: 0 auto;
-}
-
-.title {
-    color: grey;
-    font-size: 18px;
-}
-
-button {
-    border: none;
-    outline: 0;
-    display: inline-block;
-    padding: 8px;
-    color: white;
-    background-color: #000;
-    text-align: center;
-    cursor: pointer;
-    width: 100%;
-    font-size: 18px;
-}
-
-.faicon {
-  text-decoration: none;
-    font-size: 22px;
-    color: black;
-}
-
-button:hover, a:hover {
-    opacity: 0.7;
-}
-</style>
+    <script src="js/responsivenav.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" type="image/x-icon" href="images/coffeeIcon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Salsa&display=swap" rel="stylesheet"> 
 </head>
 
-<body>
-    <div class="scroll">
-        <div class="card">
-            <img src="images/troll-face-png-19700.png" alt="troll face" style="width:90%">
-            <h1>EJ</h1>
-            <p class="title">CEO & Founder</p>
-            <p>Tambay sa Store</p>
-            <a href="#" class="faicon"><i class="fa fa-dribbble"></i></a>
+<body class="owner">
+    <div class="navbar" id="myNavbar">
+        <div class="logo"><p class="highlight">Coffee Please</p></div>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="owner.html">Contact</a>
+    </div>
+
+<div class="card-container">
+    <div class="card">
+        <img src="images/profile.jpg" alt="cat"/>
+        <div class="card-text">
+            <p class="title">Eric Godwin Jose</p>
+            <p>CEO & Founder</p>
             <a href="#" class="faicon"><i class="fa fa-twitter"></i></a>
             <a href="#" class="faicon"><i class="fa fa-linkedin"></i></a>
             <a href="#" class="faicon"><i class="fa fa-facebook"></i></a>
-            <p><button>Contact</button></p>
-          </div>
+        </div>
     </div>
+
+    <div class="card">
+        <div class="card-text">
+            <p>Our Facebook</p>
+            <a href="#" class="faicon"><i class="fa fa-facebook"></i></a>
+            <p>Our Twitter</p>
+            <a href="#" class="faicon"><i class="fa fa-twitter"></i></a>
+            <p>Our Numbers</p>
+            <p style="color: rgb(0, 140, 255);">09123456789</p>
+            <p style="color: rgb(0, 140, 255);">09987654321</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="images/katze.jpg" alt="cats"/>
+        <div class="card-text">
+            <p>Join Us! Check our LinkedIn</p>
+            <a href="#" class="faicon"><i class="fa fa-linkedin"> </i></a>
+        </div>
+    </div>
+</div>
+
+    <footer>
+        &copy; 2023 Coffee Please. All rights reserved.
+    </footer>
+
 </body>
 </html>
 
