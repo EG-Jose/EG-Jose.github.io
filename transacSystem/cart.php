@@ -29,13 +29,17 @@ if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>| Your Cart</title>
 
-    <link rel="stylesheet" type="text/css" href="css/main1.css">
+    <link rel="stylesheet" type="text/css" href="css/main2.css">
     <link rel="icon" type="image/x-icon" href="images/favicon.png">
     <script src="https://kit.fontawesome.com/b9d5bac5fa.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
     <?php include 'include/header.php'; ?>
+
+    <div>
+        <h1>Items in your cart</h1>
+    </div>
 
     <?php
         foreach ($cart_items as $cart_item) {
@@ -45,7 +49,8 @@ if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
             $item_details = fetch_item_details($mysqli, $item_id, $item_type);
 
             if ($item_details) {
-    ?>
+    ?>          
+            
                 <div>
                     <h2><?= htmlspecialchars($item_details["item_name"]) ?></h2>
                     <p>Price: $<?= htmlspecialchars($item_details["item_price"]) ?></p>

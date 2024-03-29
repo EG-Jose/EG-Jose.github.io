@@ -11,13 +11,14 @@ $mysqli = require __DIR__ . "/database.php";
 
 $order_id = isset($_GET['order_id']) ? $_GET['order_id'] : null;
 $tracking_number = isset($_GET['tracking_number']) ? $_GET['tracking_number'] : null;
+$change = isset($_GET['change']) ? $_GET['change'] : null;
 
-if ($order_id === null || $tracking_number === null) {
-    echo '<p>Error: Order ID or Tracking Number not provided.</p>';
+if ($order_id === null || $tracking_number === null || $change === null) {
+    echo '<p>Error: Order ID, Tracking Number, or Change not provided.</p>';
     exit();
 }
 
-$sql = "SELECT *, '$tracking_number' AS tracking_number FROM orders WHERE id = ? ORDER BY created_at DESC LIMIT 1";
+$sql = "SELECT * FROM orders WHERE id = ?";
 $stmt = $mysqli->prepare($sql);
 $stmt->bind_param("i", $order_id);
 $stmt->execute();
@@ -39,7 +40,7 @@ $stmt->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>| Order Confirmation</title>
     
-    <link rel="stylesheet" type="text/css" href="css/main1.css">
+    <link rel="stylesheet" type="text/css" href="css/main2.css">
     <link rel="icon" type="image/x-icon" href="images/favicon.png">
     <script src="https://kit.fontawesome.com/b9d5bac5fa.js" crossorigin="anonymous"></script>
 </head>
@@ -52,13 +53,15 @@ $stmt->close();
             <p><strong>Shipping Address:</strong> <?= htmlspecialchars($order["shipping_address"]) ?></p>
             <p><strong>Payment Method:</strong> <?= htmlspecialchars($order["payment_method"]) ?></p>
             <p><strong>Order Status:</strong> <?= htmlspecialchars($order["order_status"]) ?></p>
-            <p><strong>Tracking Number:</strong> <?= htmlspecialchars($order["tracking_number"]) ?></p>
+            <p><strong>Tracking Number:</strong> <?= htmlspecialchars($tracking_number) ?></p>
             
-            <!-- Display cash amount if payment method is "Cash" and cash amount is set -->
-            <?php if ($order["payment_method"] === "cash" && isset($_POST['cash_amount'])): ?>
-                <p><strong>Cash Amount:</strong> <?= htmlspecialchars($_POST['cash_amount']) ?></p>
-            <?php endif; ?>
+            <!-- Display change -->
+            <p><strong>Change:</strong> <?= htmlspecialchars($change) ?></p>
         <?php endif; ?>
+    </div>
+
+    <div>
+        <a href="index.php">Go Home</a>
     </div>
 
     <?php include 'include/logsign.php'; ?>

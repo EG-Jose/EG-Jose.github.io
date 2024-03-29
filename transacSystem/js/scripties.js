@@ -91,18 +91,3 @@ function closeModal() {
         modal.style.display = 'none';
     }, 500);
 }
-
-// Navbar
-document.addEventListener("DOMContentLoaded", function () {
-    var mySidebar = document.getElementById("mySidebar");
-    mySidebar.style.width = "0vw";
-});
-
-function openNav() {
-    console.log("help");
-    document.getElementById("mySidebar").style.width = "25vw";
-}
-
-function closeNav() {
-    document.getElementById("mySidebar").style.width = "0";
-}

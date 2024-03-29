@@ -28,7 +28,7 @@ if (isset($_GET['id']) && isset($_GET['type'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>| Item Details</title>
 
-    <link rel="stylesheet" type="text/css" href="css/main1.css">
+    <link rel="stylesheet" type="text/css" href="css/main2.css">
     <link rel="icon" type="image/x-icon" href="images/favicon.png">
     <script src="https://kit.fontawesome.com/b9d5bac5fa.js" crossorigin="anonymous"></script>
 </head>
