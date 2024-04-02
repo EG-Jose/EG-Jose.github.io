@@ -39,7 +39,7 @@ $womenshit_result = $mysqli->query($womenshit_sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>| Home</title>
 
-    <link rel="stylesheet" type="text/css" href="css/main2.css">
+    <link rel="stylesheet" type="text/css" href="css/main4.css">
     <link rel="icon" type="image/x-icon" href="images/favicon.png">
     <script src="https://kit.fontawesome.com/b9d5bac5fa.js" crossorigin="anonymous"></script>
 </head>
@@ -68,136 +68,25 @@ $womenshit_result = $mysqli->query($womenshit_sql);
         <p><a href="latest">What's Trending</a></p>
     </div>
 
-            <div class="itemListContainer"> <!--===================================================================-->
-                <p class="item-title" id="itcat1"></p><!--=========================MEN=======================-->
-                    <div class="items-column-container" id="mens"><!--=============================================-->
-
-            <div class="itemTest">
-            <a>
-                <img src="images/cat.jpg" class="item-imageTest">
-                <div class="item-contentTest">
-                    <p class="item-priceTest">1000</p>
-                    <strong><p class="item-nameTest">Name</p></strong>
-                    <p class="item-descTest"></p>
-                </div>
-            </a>
-            </div>    
-
-                    </div>  <!--=========================MEN=======================-->
-            </div>  <!--===========================================================-->
-
 <div class="recom-grid">
     <div class="recom-grid-slides">
         
-        <div class="itemListContainer"> <!--===================================================================-->
-            <p class="item-title" id="itcat1">Men</p><!--=========================MEN=======================-->
-                <div class="items-column-container" id="mens"><!--=============================================-->
+        <div class="itemListContainer"> <!--=============================== M E N ====================================-->
 
-    <?php
-
-        if ($menshit_result->num_rows > 0) {
-            while ($row = $menshit_result->fetch_assoc()) {
-                echo '<div class="item">';
-                echo '<a href="' . $item_base_url . 'mens&id=' . $row["id"] . '">';
-                echo '<img src="' . $mens_base_url . $row["item_image_filename"] . '" class="item-image">';
-                echo '<div class="item-content">';
-                echo '<p class="item-price">' . $row["item_price"] . '</p>';
-                echo '<strong><p class="item-name">' . $row["item_name"] . '</p></strong>';
-                echo '<p class="item-desc">' . $row["item_content"] . '</p>';
-                echo '</div>';
-                echo '</a>';
-                echo '</div>';
-            }
-        } else {
-            echo "0 results";
-        }
-    ?>
-
-                </div>  <!--=========================MEN=======================-->
+            <?php include  'include/item_men.php'; ?>
+            
         </div>  <!--===========================================================-->
 
-        <div class="itemListContainer"> <!--===================================================================-->
-            <p class="item-title" id="itcat1">Womens</p><!--=========================women=====================-->
-                <div class="items-column-container" id="mens"><!--=============================================-->
+        <div class="itemListContainer"> <!--============================= W O M E N ==================================-->
 
-    <?php
+            <?php include  'include/item_women.php'; ?>
 
-        if ($womenshit_result->num_rows > 0) {
-            while ($row = $womenshit_result->fetch_assoc()) {
-                echo '<div class="item">';
-                echo '<a href="' . $item_base_url . 'womens&id=' . $row["id"] . '">';
-                echo '<img src="' . $womens_base_url . $row["item_image_filename"] . '" class="item-image">';
-                echo '<div class="item-content">';
-                echo '<p class="item-price">' . $row["item_price"] . '</p>';
-                echo '<strong><p class="item-name">' . $row["item_name"] . '</p></strong>';
-                echo '<p class="item-desc">' . $row["item_content"] . '</p>';
-                echo '</div>';
-                echo '</a>';
-                echo '</div>';
-            }
-        } else {
-            echo "0 results";
-        }
-
-    ?>
-                </div>  <!--=========================women=====================-->
         </div>  <!--===========================================================-->
 
     </div>
 </div>  <!--    recom-grid END  -->
 
-    <div class="recom-slide">
-        <a class="recom-slide-view" href="">
-            <p>View Product</p>
-            <img src="images/xros3kit.jpg">
-        </a>
-        <div class="recom-slide-desc">
-            <span style="font-size:2em;font-weight:bolder;color:#444;">Name</span><br>
-                
-        </div>
-    </div>
-
-    <div class="latest-news">
-        <p>Best</p>
-    </div>
-
-        <div class="recom-slide">
-            <a class="recom-slide-view" href="">
-                <p>View Product</p>
-                <img src="images/uwellpopreelp1pod_kit.jpg">
-            </a>
-            <div class="recom-slide-desc">
-                <span style="font-size:2em;font-weight:bolder;color:#444;">Name</span><br>
-                
-            </div>
-        </div>
-        
-    <div class="latest-news">
-        <p>Best</p>
-    </div>
-
-        <div class="recom-slide">
-            <a class="recom-slide-view" href="">
-                <p>View Product</p>
-                <img src="images/freemaxstarlux40Wkit.jpg">
-            </a>
-            <div class="recom-slide-desc">
-                <span style="font-size:2em;font-weight:bolder;color:#444;">Name</span><br>
-            </div>
-        </div>
-        
-    </div>
-</div>
-
-</div>
-
-<div class="aboutUs">
-    <div class="aboutUs-container">
-        <span class='app-name'>
-            <span class='app-initial'>Old</span> Smoke
-        </span>
-    </div>
-</div>
+</div>  <!--    Index Container END -->
 
 
     <!--Login/Signup Panel-->

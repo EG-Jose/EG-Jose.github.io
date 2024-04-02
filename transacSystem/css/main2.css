@@ -43,24 +43,6 @@ a {
     border-radius: 10px;
 }
 
-.age-limit {
-    color: red;
-}
-
-.aboutUs {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: var(--white-text-col);
-    padding: 10px;
-    border: 1px solid #ccc;
-}
-
-.aboutUs-link:hover + .aboutUs {
-    display: block;
-}
-
 /*==========Index/Home==========*/
 
 .slider-container {
@@ -234,7 +216,7 @@ a {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 10px;
-    max-height: 45vh;
+    max-height: 320px;
     overflow: hidden;
     transition: 0.5s ease-out;
 }
@@ -290,12 +272,18 @@ button.toggleButton {
 .item {
     letter-spacing: 0.5px;
     font-weight: 100;
-    height: 45em;
-    width: 15em;
-    margin: 10px;
+    height: 300px;
+    width: 240px;
+    margin: 0px;
     text-align: center;
     overflow: hidden;
-    border: 1px #fff solid ;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    transition: border-color 0.5s ease;
+}
+
+.item:hover { 
+    border-color: #000;
 }
 
 .item-name {
@@ -314,15 +302,11 @@ button.toggleButton {
     margin-left: 0.5em;
     color: var(--grey-col);
     background-color: var(--white-text-col);
-    transition: 0.5s ease-out;
+    transition: margin-top 0.5s ease; /* Added transition for smoother margin change */
 }
 
-.item:hover { 
-    border: 1px solid #000;
-
-    .item-price {
-        margin-top: -40px;
-    }
+.item:hover .item-price { /* Adjusted selector to target .item-price on hover */
+    margin-top: -40px; /* Adjusted margin-top for .item-price on hover */
 }
 
 .item-image {
@@ -334,7 +318,6 @@ button.toggleButton {
     text-align: start;
     padding-left: 0.5em;
     font-size: 0.75em;
-    margin-top: -10px; 
     transition: 1s ease-in-out;
 }
 
@@ -424,96 +407,7 @@ button.toggleButton {
     color: #2b2b2b;
 }
 
-/*==========Footer==========*/
-
-footer{
-    background-color: #111010;
-}
-.f-item-con{
-    padding: 1.5rem 4rem;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    grid-gap: 2rem;
-}
-footer .app-name{
-    color: white;
-    border-left: 4px solid var(--theme-col);
-    padding-left: 1.5rem;
-    font-size: 1.875rem;
-    line-height: 2.25rem;
-    font-weight: 700;
-}
-.app-name .app-initial{
-    color: var(--theme-col);
-}
-footer .app-info p{
-    color: white;
-    padding-left: 1.65rem;
-}
-
-footer .footer-title{ 
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-    color: white;
-    border-left: 4px solid var(--theme-col);
-    padding-left: 1.5rem;
-    height: fit-content;
-}
-footer ul{ 
-    padding-left: 1.75rem;
-    color: white;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    margin-top: .5rem;
-}
-footer ul li a{ 
-    margin: .25rem 0;
-    cursor: pointer;
-    color: #d4d4d4;
-    width: fit-content;
-}
-
-footer ul li a:hover{
-    color: white;
-}
-footer .help-sec{
-    grid-column-start: 2;
-}
-footer .cr-con{
-    background-color: #232127;
-    color: white;
-    padding: 1rem 4rem;
-    text-align: center;
-}
-.g-i-t{
-    display: grid;
-    grid-column-start: 3;
-    grid-row-start: 1;
-    grid-row-end: 3;
-}
-.g-i-t form{
-    display: flex;
-    flex-direction: column;
-    margin-top: 1rem;
-    --tw-space-y-reverse: 0;
-    margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
-    margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
-}
-form .g-inp{
-    padding: .25rem .5rem;
-    font-size: 16px;
-}
-.g-inp textarea{
-    height: 150px;
-}
-.f-btn{
-    padding: .25rem 1rem;
-    background-color: var(--theme-col);
-    border-radius: .25rem;
-    font-size: 16px;
-    color: white;
-    font-weight: 500;
-}
+/*==========Item Details==========*/
 
 
 
@@ -570,4 +464,11 @@ form .g-inp{
     .item-priceTest {
         margin-top: -40px;
     }
+}
+
+/* cartssss */
+
+.itemcart, .cartdesc{
+    align-items: center;
+    margin: 20%;
 }

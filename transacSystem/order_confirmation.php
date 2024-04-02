@@ -11,10 +11,9 @@ $mysqli = require __DIR__ . "/database.php";
 
 $order_id = isset($_GET['order_id']) ? $_GET['order_id'] : null;
 $tracking_number = isset($_GET['tracking_number']) ? $_GET['tracking_number'] : null;
-$change = isset($_GET['change']) ? $_GET['change'] : null;
 
-if ($order_id === null || $tracking_number === null || $change === null) {
-    echo '<p>Error: Order ID, Tracking Number, or Change not provided.</p>';
+if ($order_id === null || $tracking_number === null) {
+    echo '<p>Error: Order ID or Tracking Number not provided.</p>';
     exit();
 }
 
@@ -56,7 +55,7 @@ $stmt->close();
             <p><strong>Tracking Number:</strong> <?= htmlspecialchars($tracking_number) ?></p>
             
             <!-- Display change -->
-            <p><strong>Change:</strong> <?= htmlspecialchars($change) ?></p>
+            <!-- <p><strong>Change:</strong> <?= htmlspecialchars($change) ?></p> -->
         <?php endif; ?>
     </div>
 

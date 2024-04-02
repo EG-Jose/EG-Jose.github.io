@@ -3,11 +3,21 @@ session_start();
 
 $mysqli = require __DIR__ . "/database.php";
 
-// Example item price
-$item_price = 10; // You can fetch the actual item price from your database
+// Check if user is logged in
+$user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
+
+if (!$user_id && !isset($_SESSION['popup_shown'])) {
+    // Set session variable to indicate that the popup has been shown
+    $_SESSION['popup_shown'] = true;
+
+    // Display the logsign.php modal
+    echo '<script type="text/javascript">document.addEventListener("DOMContentLoaded", function() { document.getElementById("logsignModal").style.display = "block"; });</script>';
+}
 
 if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
     $cart_items = [];
+    $total_price = 0;
+
     foreach ($_SESSION['cart'] as $cart_item) {
         $item_id = $cart_item['id'];
         $item_type = $cart_item['type'];
@@ -21,7 +31,9 @@ if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
         $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
-            $cart_items[] = $result->fetch_assoc();
+            $item = $result->fetch_assoc();
+            $cart_items[] = $item;
+            $total_price += $item['item_price'];
         }
     }
 
@@ -32,55 +44,46 @@ if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
         $province = $_POST['province'];
         $postal_code = $_POST['postal_code'];
         $payment_method = $_POST['payment_method'];
-        $cash_amount = isset($_POST['cash_amount']) ? $_POST['cash_amount'] : null;
-    
-        if (empty($house_number) || empty($barangay) || empty($town_city) || empty($province) || empty($postal_code) || $cash_amount === null) {
-            echo 'Error: All address fields and cash amount are required.';
-            exit();
-        }
-    
-        // Convert $cash_amount to a number (integer or float) if necessary
-        $cash_amount = floatval($cash_amount);
-    
-        // Calculate change
-        $change = $cash_amount - ($item_price * count($cart_items));
-    
-        // Redirect to order_confirmation.php with order details and change
+
         $shipping_address = $house_number . ', ' . $barangay . ', ' . $town_city . ', ' . $province . ', ' . $postal_code;
-        $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
         $order_status = 'pending';
-    
-        $sql = "INSERT INTO orders (user_id, shipping_address, payment_method, order_status) VALUES (?, ?, ?, ?)";
+
+        // Check if user is logged in
+        $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
+
+        // Prepare SQL query with user_id column
+        $sql = "INSERT INTO orders (user_id, shipping_address, payment_method, order_status, total_price) VALUES (?, ?, ?, ?, ?)";
         $stmt = $mysqli->prepare($sql);
-        $stmt->bind_param("isss", $user_id, $shipping_address, $payment_method, $order_status);
-    
+        $stmt->bind_param("isssd", $user_id, $shipping_address, $payment_method, $order_status, $total_price);
+
         if ($stmt->execute()) {
             unset($_SESSION['cart']);
             $order_id = $stmt->insert_id;
-    
+
             function generateTrackingNumber() {
                 $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
                 $tracking_length = 10;
                 $tracking_number = '';
-        
+
                 for ($i = 0; $i < $tracking_length; $i++) {
                     $index = rand(0, strlen($characters) - 1);
                     $tracking_number .= $characters[$index];
                 }
-        
+
                 return $tracking_number;
             }
-    
+
             $tracking_number = generateTrackingNumber();
-    
-            header("Location: order_confirmation.php?order_id=$order_id&tracking_number=$tracking_number&change=$change");
+
+            header("Location: order_confirmation.php?order_id=$order_id&tracking_number=$tracking_number");
             exit();
         } else {
             echo 'Error: Failed to place order. Please try again.';
         }
-    
+
         $stmt->close();
     }
+}
 ?>
 
 <!DOCTYPE html>
@@ -90,7 +93,7 @@ if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>| Checkout</title>
 
-    <link rel="stylesheet" type="text/css" href="css/main2.css">
+    <link rel="stylesheet" type="text/css" href="css/main4.css">
     <link rel="icon" type="image/x-icon" href="images/favicon.png">
     <script src="https://kit.fontawesome.com/b9d5bac5fa.js" crossorigin="anonymous"></script>
 </head>
@@ -98,15 +101,17 @@ if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
 
     <?php include 'include/header.php'; ?>
 
-        <h1>Selected Items</h1>
+    <h1>Selected Items</h1>
     <?php foreach ($cart_items as $item): ?>
         <div>
-            <h2><?php echo htmlspecialchars($item["item_name"]); ?></h2>
-            <p>Price: $<?php echo htmlspecialchars($item["item_price"]); ?></p>
+            <h2><?= htmlspecialchars($item["item_name"]) ?></h2>
+            <p>Price: $<?= htmlspecialchars($item["item_price"]) ?></p>
         </div><br>
     <?php endforeach; ?>
 
-    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+    <p>Total Price: $<?= $total_price ?></p>
+
+    <form id="checkoutForm" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
         <h2>Address</h2>
 
         <label for="house_number">House Number:</label>
@@ -125,51 +130,21 @@ if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
         <input type="text" id="postal_code" name="postal_code" required><br>
 
         <label for="payment_method">Payment Method:</label>
-        <select id="payment_method" name="payment_method" required onchange="toggleCashInput()">
+        <select id="payment_method" name="payment_method" required>
             <option value="credit_card">Credit Card</option>
             <option value="paypal">PayPal</option>
             <option value="cash on delivery">Cash on Delivery</option>
-            <option value="cash">Cash</option>
         </select><br>
-
-        <div id="cash_input" style="display: none;">
-            <label for="cash_amount">Enter Cash Amount:</label>
-            <input type="text" id="cash_amount" name="cash_amount"><br>
-            <input type="hidden" id="cash_amount_hidden" name="cash_amount" value="">
-        </div>
 
         <input type="submit" name="checkout" value="Proceed to Payment">
     </form>
 
     <?php include 'include/logsign.php'; ?>
 
-<footer>
-    <?php include 'include/footer.php'; ?>
-</footer>
+    <footer>
+        <?php include 'include/footer.php'; ?>
+    </footer>
 
-<script type="text/javascript" src="js/scripties.js"></script>
-
-<script>
-    function toggleCashInput() {
-        var paymentMethod = document.getElementById("payment_method").value;
-        var cashInput = document.getElementById("cash_input");
-        var cashAmountHidden = document.getElementById("cash_amount_hidden");
-
-        if (paymentMethod === "cash") {
-            cashInput.style.display = "block";
-            cashAmountHidden.value = document.getElementById("cash_amount").value;
-        } else {
-            cashInput.style.display = "none";
-            cashAmountHidden.value = "";
-        }
-    }
-</script>
-
+    <script type="text/javascript" src="js/scripties.js"></script>
 </body>
 </html>
-
-<?php
-} else {
-    echo 'Your cart is empty.';
-}
-?>

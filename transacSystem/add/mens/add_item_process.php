@@ -43,6 +43,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if ($stmt->execute()) {
                 echo "Item added successfully!";
+                header("Location: index.php");
+                exit();
             } else {
                 echo "Error adding item: " . $stmt->error;
             }

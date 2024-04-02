@@ -1,38 +1,4 @@
-<?php
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-session_start();
-
-$mysqli = require __DIR__ . "/database.php";
-
-if (isset($_SESSION["user_id"])) {
-    $user_sql = "SELECT * FROM user WHERE id = ?";
-    $stmt = $mysqli->prepare($user_sql);
-    $stmt->bind_param("i", $_SESSION["user_id"]);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $user = $result->fetch_assoc();
-}
-
-if (!isset($_SESSION['popup_shown'])) {
-    $_SESSION['popup_shown'] = false;
-}
-
-$image_base_url = 'image/';
-$item_base_url = 'item_details.php?type=';
-
-$geekvape_sql = "SELECT * FROM geekvape LIMIT 10";
-$smok_sql = "SELECT * FROM smok LIMIT 10";
-$voopoo_sql = "SELECT * FROM voopoo LIMIT 10";
-
-$geekvape_result = $mysqli->query($geekvape_sql);
-$smok_result = $mysqli->query($smok_sql);
-$voopoo_result = $mysqli->query($voopoo_sql);
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +7,7 @@ $voopoo_result = $mysqli->query($voopoo_sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>| Products</title>
 
-    <link rel="stylesheet" type="text/css" href="css/main2.css">
+    <link rel="stylesheet" type="text/css" href="css/main4.css">
     <link rel="icon" type="image/x-icon" href="images/favicon.png">
     <script src="https://kit.fontawesome.com/b9d5bac5fa.js" crossorigin="anonymous"></script>
 </head>
@@ -86,26 +52,7 @@ $voopoo_result = $mysqli->query($voopoo_sql);
         <p class="item-title" id="itcat1"><a href="https://www.geekvape.com/"></a></p>
         <div class="items-column-container" id="itemCat1">
 
-    <?php
-
-        if ($geekvape_result->num_rows > 0) {
-            while ($row = $geekvape_result->fetch_assoc()) {
-                echo '<div class="item">';
-                echo '<a href="' . $item_base_url . 'geekvape&id=' . $row["id"] . '">';
-                echo '<img src="' . $image_base_url . $row["item_image_filename"] . '" class="item-image">';
-                echo '<div class="item-content">';
-                echo '<strong><p class="item-name">' . $row["item_name"] . '</p></strong>';
-                echo '<p class="item-price">' . $row["item_price"] . '</p>';
-                echo '<p class="item-desc">' . $row["item_content"] . '</p>';
-                echo '</div>';
-                echo '</a>';
-                echo '</div>';
-            }
-        } else {
-            echo "0 results";
-        }
-
-    ?>
+   
 
         </div>
         <div class="shbtn">
@@ -125,27 +72,7 @@ $voopoo_result = $mysqli->query($voopoo_sql);
         <p class="item-title" id="itcat2"><a href="https://store.smoktech.com/"></a></p>
         <div class="items-column-container" id="itemCat2">
 
-    <?php
-
-        if ($smok_result->num_rows > 0) {
-            while ($row = $smok_result->fetch_assoc()) {
-                echo '<div class="item">';
-                echo '<a href="' . $item_base_url . 'smok&id=' . $row["id"] . '">';
-                echo '<img src="' . $image_base_url . $row["item_image_filename"] . '" class="item-image">';
-                echo '<div class="item-content">';
-                echo '<strong><p class="item-name">' . $row["item_name"] . '</p></strong>';
-                echo '<p class="item-price">' . $row["item_price"] . '</p>';
-                echo '<p class="item-desc">' . $row["item_content"] . '</p>';
-                echo '</div>';
-                echo '</a>';
-                echo '</div>';
-            }
-        } else {
-            echo "0 results";
-        }
-
-    ?>
-
+    
             
 
         </div>
@@ -167,26 +94,7 @@ $voopoo_result = $mysqli->query($voopoo_sql);
         <p class="item-title" id="itcat3"><a href="https://www.voopoo.com/"></a></p>
         <div class="items-column-container" id="itemCat3">
 
-    <?php
-
-        if ($voopoo_result->num_rows > 0) {
-            while ($row = $voopoo_result->fetch_assoc()) {
-                echo '<div class="item">';
-                echo '<a href="' . $item_base_url . 'voopoo&id=' . $row["id"] . '">';
-                echo '<img src="' . $image_base_url . $row["item_image_filename"] . '" class="item-image">';
-                echo '<div class="item-content">';
-                echo '<strong><p class="item-name">' . $row["item_name"] . '</p></strong>';
-                echo '<p class="item-price">' . $row["item_price"] . '</p>';
-                echo '<p class="item-desc">' . $row["item_content"] . '</p>';
-                echo '</div>';
-                echo '</a>';
-                echo '</div>';
-            }
-        } else {
-            echo "0 results";
-        }
-
-    ?>
+   
 
             
 
