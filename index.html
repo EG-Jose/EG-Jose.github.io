@@ -1,115 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="widtd=device-widtd, initial-scale=1.0">
-	
-	<link rel="stylesheet" href="style.css">
-	<link rel="icon" type="image/x-icon" href="sadcat.png">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    	<title>EGJose | Repository</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/x-icon" href="sadcat.png">
+    <title>EGJose | Repository</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
 
-	<style>
-		body {
-			margin: 0;
-			align-content: center;
-			background: rgb(2,0,36);
-			background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
-		}
+        .container {
+            text-align: center;
+			width: auto;
+            margin-bottom: 20px;
+			padding: 20px;
+			border-radius: 10px;
+            color: black;
+			background-color: white;
+        }
 
-		.container {
-			background-color: beige;
-			padding: 10px;
-			margin: 0 auto;
-			margin-top: 5vw;
-			margin-bottom: 5vw;
-			width: 90vw;
-			border-radius: 20px;
-			box-shadow: 5px 5px 10px;
-			text-align: center;
-		}
+        .container p {
+			font-size: 1.2rem;
+            margin: 5px 0;
+        }
 
-		.welcome {
-			font-family: monospace;
-			font-size: 30px;
-		}
-		
-		.who, #here{
-			font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-			color: rgb(51, 94, 151);
-			font-size: 12px;
-		}
+        /* Card Grid */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            width: 90%;
+            max-width: 1200px;
+            padding: 20px;
+        }
 
-		a {
-			text-decoration: none;
-			font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-			color: rgb(51, 94, 151);
-		}
+        /* Individual Card */
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+        }
 
-		a:hover, #here:hover{
-			color: crimson;
-		}
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+        }
 
-		.items {
-			width: 80vw;
-			text-align: center;
-			background-color: beige;
-			margin: 0 auto;
-			border-spacing: 10px;
-			border-radius: 20px;
-			box-shadow: 5px 5px 10px;
-			color: black;
-		}
+        .card a {
+            font-weight: bold;
+            font-size: 1rem;
+            color: #007bff;
+        }
 
-		th {
-			font-family: monospace;
-			font-size: 30px;
-		}
+        .card a:hover {
+            color: crimson;
+        }
 
-		td {
-			font-size: 20px;
-		}
+        .card-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #007bff;
+        }
 
-		img {
-			position: fixed;
-			width: 10vw;
-			height: 10vw;
-			bottom: 0px;
-			left: 0px;
-		}
-			
-	</style>
+        .card-description {
+            font-size: 0.9rem;
+            color: gray;
+        }
+
+        .sadcat {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            width: 2rem;
+            height: 2rem;
+        }
+
+        @media screen and (max-width: 768px) {
+
+			.container {
+				width: 80%;
+			}
+
+            .card-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+				padding: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
-	<img src="sadcat.png">
-	<div class="container">
-		
-		<p class="welcome">Hi there! Please choose from the links below.</p>
-		<p class="who">(This is like an index of my project websites, check the repository <a id="here" href="https://github.com/EG-Jose/EG-Jose.github.io">here)</a><br>
-		(These website are optimized for desktops and not mobile phones)<br>(Please put it landscape mode if you're on mobile. Thanks You!)</p>
+    <img src="sadcat.png" alt="Sad Cat" class="sadcat">
+
+    <div class="container">
+        <p>Hi there! Please choose from the links below.</p>
+        <p>This is like an index of my project websites, check the repository 
+            <a id="here" href="https://github.com/EG-Jose/EG-Jose.github.io" target="_blank"><strong>here</strong></a></p>
+        <p>These websites are optimized for desktops and not mobile phones</p>
+        <p>Please put it in landscape mode if you're on mobile. Thank you!</p>
+    </div>
+    <div class="card-grid">
+        <div class="card">
+            <div class="card-title">Resume</div>
+            <a href="https://eg-jose.github.io/Resume/" target="_blank">View Project</a>
+        </div>
+        <div class="card">
+            <div class="card-title">Snake</div>
+            <a href="https://eg-jose.github.io/Snake/" target="_blank">View Project</a>
+        </div>
+        <div class="card">
+            <div class="card-title">Coffee Please</div>
+            <a href="https://eg-jose.github.io/Coffee Please/" target="_blank">View Project</a>
+        </div>
+        <div class="card">
+            <div class="card-title">Coffee Please (V1.1)</div>
+            <a href="https://eg-jose.github.io/CoffeePleaseV1.1/" target="_blank">View Project</a>
+        </div>
+        <div class="card">
+            <div class="card-title">Mobile Gitz</div>
+            <a href="https://eg-jose.github.io/Mobile Gitz/" target="_blank">View Project</a>
+        </div>
 	</div>
-	
-	<table class="items">
-		<tr>
-			<th colspan="4">Websites</th>
-			<th colspan="1"></th>
-			<th colspan="2">Midterm Quiz</th>
-		</tr>
-		<tr>
-			<td><a href="https://eg-jose.github.io/Resume/" target="_blank">Resume</a></td>
-			<td><a href="https://eg-jose.github.io/Snake/" target="_blank">Snake</a></td>
-			<td><a href="https://eg-jose.github.io/Coffee Please/" target="_blank">Coffee Please</a></td>
-			<td><a href="https://eg-jose.github.io/CoffeePleaseV1.1/" target="_blank">Coffee Please(V1.1)</a></td>
-			<td><a href="https://eg-jose.github.io/Mobile Gitz/" target="_blank">Mobile Gitz</a></td>
-			<td><!--freespace--></td>
-			<td><a href="https://eg-jose.github.io/MQ/MQ1/JOSE_ERIC_GODWIN_MQ1.html" target="_blank">MQ1</a></td>
-			<td><a href="https://eg-jose.github.io/MQ/MQ2/JOSE, EG_MQ2.html" target="_blank">MQ2</a></td>
-		</tr>
-		<tr>
-			
-		</tr>
-	</table>
-   
-    
+
+	<div class="card-grid">
+        <div class="card">
+            <div class="card-title">Midterm Quiz 1</div>
+            <a href="https://eg-jose.github.io/MQ/MQ1/JOSE_ERIC_GODWIN_MQ1.html" target="_blank">View Project</a>
+        </div>
+        <div class="card">
+            <div class="card-title">Midterm Quiz 2</div>
+            <a href="https://eg-jose.github.io/MQ/MQ2/JOSE, EG_MQ2.html" target="_blank">View Project</a>
+        </div>
+    </div>
 </body>
 </html>
