@@ -9,7 +9,7 @@
     <!-- FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-        
+        /* Light Mode */
         body {
             margin: 0;
             font-family: 'Poppins', sans-serif;
@@ -17,23 +17,28 @@
             color: #333;
             line-height: 1.6;
         }
-    
+
+        /* Dark Mode */
+        body.dark-mode {
+            background: #333;
+            color: #f1f1f1;
+        }
+
         a, .highlight {
             text-decoration: none;
             color: #007BFF;
         }
-    
+
         a:hover {
             text-decoration: underline;
             color: #0056b3;
         }
-    
-        /* Navigation Bar */
+
         .topnav {
             overflow: hidden;
             border-radius: 5px;
         }
-    
+
         .topnav a {
             color: #007BFF;
             padding: 10px 20px;
@@ -41,21 +46,20 @@
             display: inline-block;
             transition: background-color 0.3s ease;
         }
-    
+
         .topnav a.active, .topnav a:hover {
             background: #007BFF;
             color: #fff;
             border-radius: 5px;
         }
-    
-        /* Container */
+
         .container {
             display: flex;
             flex-wrap: wrap;
             margin: 20px;
             gap: 20px;
         }
-    
+
         .column {
             flex: 1;
             background: #ffffff;
@@ -63,15 +67,14 @@
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-    
-        /* Left Column */
+
         .left {
             max-width: 300px;
             height: auto;
             text-align: center;
             flex: 1 1 300px;
         }
-    
+
         .pfp {
             width: 100px;
             height: 100px;
@@ -79,12 +82,12 @@
             margin-bottom: 10px;
             border: 3px solid #007BFF;
         }
-    
+
         .contact_section h2 {
             border-bottom: 2px solid #007BFF;
             padding-bottom: 10px;
         }
-    
+
         .contact {
             margin: 10px 0;
             display: flex;
@@ -92,7 +95,7 @@
             justify-content: center;
             gap: 10px;
         }
-    
+
         .fbButton {
             padding: 5px 10px;
             background: #007BFF;
@@ -101,83 +104,109 @@
             border-radius: 5px;
             cursor: pointer;
         }
-    
+
         .fbButton:hover {
             background: #0056b3;
         }
-    
-        /* Right Column */
-        .section {
-            margin-bottom: 20px;
-        }
-    
+
         .section h2 {
             background: #007BFF;
             color: white;
             padding: 10px;
             border-radius: 5px;
         }
-    
-        .experience, .education {
-            background: #f9f9f9;
-            padding: 10px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            margin-top: 10px;
+
+        /* Dark Mode Styles */
+        .dark-mode .column {
+            background: #444;
+            color: #f1f1f1;
         }
-    
+
+        .dark-mode .topnav a {
+            color: #f1f1f1;
+        }
+
+        .dark-mode .topnav a.active, .dark-mode .topnav a:hover {
+            background: #007BFF;
+            color: #fff;
+        }
+
+        .dark-mode .fbButton {
+            background: #007BFF;
+        }
+
+        .dark-mode .fbButton:hover {
+            background: #0056b3;
+        }
+
+        /* Switch Button */
+        .switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
         /* Responsive */
         @media (max-width: 1024px) {
             .container {
                 flex-direction: column;
                 gap: 15px;
             }
-    
+
             .left {
                 max-width: 100%;
                 text-align: center;
             }
-    
+
             .pfp {
                 width: 120px;
                 height: 120px;
             }
-    
+
             .column {
                 padding: 15px;
             }
-    
+
             .section h2 {
                 font-size: 1.2em;
             }
         }
-    
+
         @media (max-width: 768px) {
             .topnav a {
                 padding: 8px 16px;
                 font-size: 14px;
             }
-    
+
             .contact_section h2 {
                 font-size: 1.1em;
             }
-    
+
             .contact {
                 font-size: 14px;
             }
-    
+
             .column {
                 padding: 10px;
             }
-    
+
             .fbButton {
                 font-size: 14px;
                 padding: 4px 8px;
             }
         }
-    </style>    
+    </style>
 </head>
 <body>
+
+    <!-- Dark Mode Switch Button -->
+    <button class="switch" onclick="toggleMode()">Switch to Dark Mode</button>
 
     <!-- Main Container -->
     <div class="container">
@@ -258,6 +287,32 @@
             </section>
         </div>
     </div>
+
+<script>
+    // Function to toggle light/dark mode
+    function toggleMode() {
+        document.body.classList.toggle('dark-mode');
+        const button = document.querySelector('.switch');
+        if (document.body.classList.contains('dark-mode')) {
+            button.textContent = 'Switch to Light Mode';
+            localStorage.setItem('theme', 'dark');
+        } else {
+            button.textContent = 'Switch to Dark Mode';
+            localStorage.setItem('theme', 'light');
+        }
+    }
+
+    window.onload = function() {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+            document.querySelector('.switch').textContent = 'Switch to Light Mode';
+        } else {
+            document.body.classList.remove('dark-mode');
+            document.querySelector('.switch').textContent = 'Switch to Dark Mode';
+        }
+    }
+</script>
 
 </body>
 </html>
