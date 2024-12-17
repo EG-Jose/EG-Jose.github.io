@@ -3,156 +3,261 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="icon" type="image/x-icon" href="sadcat.png">
-    <title>EGJose | Repository</title>
     <style>
         /* General Styles */
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
-            color: grey;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom right, #f8f9fa, #ffffff);
+            color: #333;
+            line-height: 1.6;
+        }
+    
+        a, .highlight {
+            text-decoration: none;
+            color: #007BFF;
+        }
+    
+        a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+    
+        /* Navigation Bar */
+        .topnav {
+            overflow: hidden;
+            border-radius: 5px;
+        }
+    
+        .topnav a {
+            color: #007BFF;
+            padding: 10px 20px;
+            text-transform: uppercase;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+    
+        .topnav a.active, .topnav a:hover {
+            background: #007BFF;
+            color: #fff;
+            border-radius: 5px;
+        }
+    
+        /* Container */
+        .container {
             display: flex;
-            flex-direction: column;
+            flex-wrap: wrap;
+            margin: 20px;
+            gap: 20px;
+        }
+    
+        .column {
+            flex: 1;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    
+        /* Left Column */
+        .left {
+            max-width: 300px;
+            height: auto;
+            text-align: center;
+            flex: 1 1 300px; /* Allow the left column to shrink */
+        }
+    
+        .pfp {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            border: 3px solid #007BFF;
+        }
+    
+        .contact_section h2 {
+            border-bottom: 2px solid #007BFF;
+            padding-bottom: 10px;
+        }
+    
+        .contact {
+            margin: 10px 0;
+            display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 100vh;
+            gap: 10px;
         }
-
-        .container {
-            text-align: center;
-			width: auto;
+    
+        .fbButton {
+            padding: 5px 10px;
+            background: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    
+        .fbButton:hover {
+            background: #0056b3;
+        }
+    
+        /* Right Column */
+        .section {
             margin-bottom: 20px;
-			padding: 20px;
-			border-radius: 10px;
-            color: black;
-			background-color: white;
-			box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.3);
         }
-
-        .container p {
-			font-size: 1.2rem;
-            margin: 5px 0;
+    
+        .section h2 {
+            background: #007BFF;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
         }
-
-        /* Card Grid */
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            width: 90%;
-            max-width: 1200px;
-            padding: 20px;
+    
+        .experience, .education {
+            background: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-top: 10px;
         }
-
-        /* Individual Card */
-        .card {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.3);
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-            text-align: center;
-			border: 3px solid white;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 2rem 3.5rem rgba(0, 0, 0, 0.5);
-			border: 3px solid black;
-        }
-
-        .card a {
-            font-weight: bold;
-            font-size: 1rem;
-            color: #007bff;
-        }
-
-        .card a:hover {
-            color: crimson;
-        }
-
-        .card-title {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: #007bff;
-        }
-
-        .card-description {
-            font-size: 0.9rem;
-            color: gray;
-        }
-
-        .sadcat {
-            position: fixed;
-            bottom: 0px;
-            left: 0px;
-            width: 5rem;
-            height: 5rem;
-        }
-
-        @media screen and (max-width: 768px) {
-
-			.container {
-				width: 80%;
-				padding: 10px;
-			}
-
-            .card-grid {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-				padding: 10px;
+    
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+    
+            .left {
+                max-width: 100%;  /* Full width on smaller screens */
+                text-align: center;
+            }
+    
+            .pfp {
+                width: 120px;
+                height: 120px;
+            }
+    
+            .column {
+                padding: 15px;
+            }
+    
+            .section h2 {
+                font-size: 1.2em;
             }
         }
-    </style>
+    
+        @media (max-width: 768px) {
+            .topnav a {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+    
+            .contact_section h2 {
+                font-size: 1.1em;
+            }
+    
+            .contact {
+                font-size: 14px;
+            }
+    
+            .column {
+                padding: 10px;
+            }
+    
+            .fbButton {
+                font-size: 14px;
+                padding: 4px 8px;
+            }
+        }
+    </style>    
 </head>
 <body>
-    <img src="sadcat.png" alt="Sad Cat" class="sadcat">
 
+    <!-- Main Container -->
     <div class="container">
-        <p>Hi there! Please choose from the links below.</p>
-        <p>This is like an index of my project websites, check the repository 
-            <a id="here" href="https://github.com/EG-Jose/EG-Jose.github.io" target="_blank"><strong>here</strong></a></p>
-        <p>These websites are optimized for desktops and not mobile phones</p>
-        <p>Please put it in landscape mode if you're on mobile. Thank you!</p>
-    </div>
-    <div class="card-grid">
-        <div class="card">
-            <div class="card-title">Resume</div>
-            <a href="https://eg-jose.github.io/Resume/" target="_blank">View Project</a>
-        </div>
-        <div class="card">
-            <div class="card-title">Snake</div>
-            <a href="https://eg-jose.github.io/Snake/" target="_blank">View Project</a>
-        </div>
-        <div class="card">
-            <div class="card-title">Coffee Please</div>
-            <a href="https://eg-jose.github.io/Coffee Please/" target="_blank">View Project</a>
-        </div>
-        <div class="card">
-            <div class="card-title">Coffee Please (V1.1) PHP</div>
-            <a href="https://eg-jose.github.io/CoffeePleaseV1.1/" target="_blank">View Project</a>
-        </div>
-        <div class="card">
-            <div class="card-title">Mobile Gitz</div>
-            <a href="https://eg-jose.github.io/Mobile Gitz/" target="_blank">View Project</a>
-        </div>
-	</div>
 
-	<div class="card-grid">
-        <div class="card">
-            <div class="card-title">Midterm Quiz 1</div>
-            <a href="https://eg-jose.github.io/MQ/MQ1/JOSE_ERIC_GODWIN_MQ1.html" target="_blank">View Project</a>
+        <!-- Left Column -->
+        <div class="column left">
+            <div class="meet">
+                <img class="pfp" src="images,videos/!image5L.JPG" alt="Profile Picture">
+                <h1>Eric Godwin Quidangen Jose</h1>
+            </div>
+
+            <div class="contact_section">
+                <h2>Contact Information</h2>
+                <div class="contact">
+                    <i class="fa fa-envelope"></i> egj.rei@gmail.com
+                </div>
+                <div class="contact">
+                    <i class="fa fa-phone"></i> +63 9065083590
+                </div>
+                <div class="contact">
+                    <i class="fa fa-facebook"></i>
+                    <a href="https://www.facebook.com/egj.eric" target="_blank">
+                        <button class="fbButton">Eric Godwin Jose</button>
+                    </a>
+                </div>
+            </div>
         </div>
-        <div class="card">
-            <div class="card-title">Midterm Quiz 2</div>
-            <a href="https://eg-jose.github.io/MQ/MQ2/JOSE, EG_MQ2.html" target="_blank">View Project</a>
+
+        <!-- Right Column -->
+        <div class="column right">
+
+            <!-- Navigation Bar -->
+            <div class="topnav">
+                <a class="active" href="index.html">Home</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="sites.html">Sites</a>
+            </div>
+
+            <section class="section">
+                <h2>Education</h2>
+                <div class="education">
+                    <h3>Senior High School Graduate</h3>
+                    <p><a class="links" href="https://www.facebook.com/lidliddanhs/">Lidlidda National High School</p></a>
+                    <p>Currently studying IT at <a class="links" href="https://ispsc.edu.ph/campuses/candon-city-campus/">Ilocos Sur Polythecnic State College</p></a>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Work Experience</h2>
+                <div class="experience">
+                    <h3>Computer Repair</h3>
+                    <p>Experience in diagnosing and repairing hardware/software issues.</p>
+                </div>
+                <div class="experience">
+                    <h3>Construction</h3>
+                    <p>Worked in manual labor, learning teamwork and project management.</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Skills</h2>
+                <div class="experience">
+                    <h3>Programming</h3>
+                    <p>Proficient in <span class="highlight">Web Development</span> and <span class="highlight">Web Design</span>.</p>
+                    <p>I know the basics of <span class="highlight">Java</span>, <span class="highlight">C++</span> and <span class="highlight">Kotlin</span>.</p>
+                </div>
+                <div class="experience">
+                    <h3>Communication</h3>
+                    <p>Improving verbal and written communication to collaborate better in teams.</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Hobbies</h2>
+                <div class="experience">
+                    <p>Playing guitar, photography, and riding motorcycles with friends.</p>
+                </div>
+            </section>
         </div>
     </div>
+
 </body>
 </html>
