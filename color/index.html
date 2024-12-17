@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Picker</title>
+
+    <Style>
+
+        body {
+            transition: background-color 0.3s ease-in-out;
+            margin: 0;
+            padding: 0;
+            color: auto;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            width: 100vw;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header {
+            font-size: 3em;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        
+        .button-group {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 1px;
+            width: auto;
+            justify-items: center;
+        }
+
+        a {
+            font-size: 2em;
+            font-weight: bold;
+            width: 10rem;
+            height: 3rem;
+            margin: 0.1em;
+            padding: 0.5em;
+            border: 2px solid black;
+            border-radius: 20px;
+            transition: all 0.3s ease-in-out, transform 0.3s ease-in-out ;
+        }
+
+        .container a:hover {
+            transform: translateY(-1rem);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        p {
+            margin: 0;
+            padding: 0;
+            font-size: 0.5em;
+            transition: all 0.3s ease-in-out ;
+        }
+
+        .addColorBtn {
+            font-size: 1rem;
+            width: auto;
+            height: auto;
+            border: 2px solid black;
+            margin: 0.5rem;
+            padding: 0.5rem;
+            border-radius: 10px;
+            transition: all 0.3s ease-in-out, transform 0.3s ease-in-out ;
+        }
+        
+        .defColorBtn {
+            background-color: white;
+        }
+
+        .redColorBtn {
+            background-color: red;
+        }
+
+        .greenColorBtn {
+            background-color: green;
+        }
+
+        .blueColorBtn {
+            background-color: blue;
+        }
+
+        .yellowColorBtn {
+            background-color: yellow;
+        }
+
+        .rndColorBtn {
+            background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet, red);
+        }
+
+        .deleteBtn {
+            background-color: white;
+            color: black;
+            height: 1.5rem;
+            width: auto;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            border-radius: 10px;
+            right: 0;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .deleteBtn:hover {
+            background-color: darkred;
+        }
+
+        a:hover .deleteBtn {
+            transform: none;
+        }
+
+    </Style>
+</head>
+<body>
+
+    <div class="container">
+        <p class="header" id="header">Pick a Color!</p>
+        <button class="addColorBtn" id="addColorBtn" onclick="addColor()">
+            + Color<p id="addColorP"><!-- New Color --></p>
+        </button>
+
+        <div class="button-group">
+            <a class="defColorBtn color" id="defColorBtn" onclick="setBgDefault()">
+                Default<p id="defaultP">#ffffff</p></a>
+				
+            <a class="redColorBtn color" id="redColorBtn" onclick="setBgRed()">
+                Red<p id="redP">#ff0000</p></a>
+				
+            <a class="greenColorBtn color" id="greenColorBtn" onclick="setBgGreen()">
+                Green<p id="greenP">#00ff00</p></a>
+				
+            <a class="blueColorBtn color" id="blueColorBtn" onclick="setBgBlue()">
+                Blue<p id="blueP">#0000ff</p></a>
+				
+            <a class="yellowColorBtn color" id="yellowColorBtn" onclick="setBgYellow()">
+                Yellow<p id="yellowP">#FFFF00</p></a>
+				
+            <a class="rndColorBtn color" id="rndColorBtn" onclick="setBgRandom()">
+                Random<p id="rndP"><!--BgColor--></p></a>
+        </div>
+    </div>
+
+    <script>
+
+    const defColorBtn = document.querySelector("#defColorBtn");
+    const redColorBtn = document.querySelector("#redColorBtn");
+    const greenColorBtn = document.querySelector("#greenColorBtn");
+    const blueColorBtn = document.querySelector("#blueColorBtn");
+    const yellowColorBtn = document.querySelector("#yellowColorBtn");
+    const rndColorBtn = document.querySelector("#rndColorBtn");
+    const header = document.querySelector("#header");
+    
+    function resetFontSizes() {
+        const paragraphs = document.querySelectorAll(".container p");
+        paragraphs.forEach(p => {
+            p.style.fontSize = "0.5em";
+            header.style.fontSize = "3em";
+        });
+
+        const links = document.querySelectorAll(".container a");
+        links.forEach(a => {
+            a.style.transform = ""
+        });
+    }
+
+    function setBgDefault() { //                    >>>>>>> WHITE <<<<<<
+        resetFontSizes();
+        document.body.style.backgroundColor = 'white';
+        defColorBtn.style.transform = "scale(1.5)"
+        document.getElementById("rndP").textContent = "";
+    }
+    
+    function setBgRed() { //                        >>>>>>> RED <<<<<<
+        resetFontSizes();
+        document.body.style.backgroundColor = 'red';
+        redColorBtn.style.transform = "scale(1.5)"
+        document.getElementById("rndP").textContent = "";
+    }
+
+    function setBgGreen() { //                      >>>>>>> GREEN <<<<<<
+        resetFontSizes();
+        document.body.style.backgroundColor = 'green';
+        greenColorBtn.style.transform = "scale(1.5)"
+        document.getElementById("rndP").textContent = "";
+    }
+
+    function setBgBlue() { //                       >>>>>>> BLUE <<<<<<
+        resetFontSizes();
+        document.body.style.backgroundColor = 'blue';
+        blueColorBtn.style.transform = "scale(1.5)"
+        document.getElementById("rndP").textContent = "";
+    }
+
+    function setBgYellow() {
+        resetFontSizes();
+        document.body.style.backgroundColor = 'yellow';
+        yellowColorBtn.style.transform = "scale(1.5)"
+        document.getElementById("rndP").textContent = "";
+    }
+
+    function setBgRandom() { //                     >>>>>>> RANDOM <<<<<<
+        resetFontSizes();
+    
+        var x = Math.floor(Math.random() * 256);
+        var y = Math.floor(Math.random() * 256);
+        var z = Math.floor(Math.random() * 256);
+
+        var bgColor = "rgb(" + x + "," + y + "," + z + ")";
+        
+        document.body.style.background = bgColor;
+        rndColorBtn.style.transform = "scale(1.5)"
+
+        document.getElementById("rndP").textContent = bgColor;
+    }
+
+    function addColor() {
+        const colorName = prompt("Enter the name of the color (e.g., red, green, blue):");
+
+        if (!colorName) {
+            alert("Color name is required.");
+            return;
+        }
+
+        // Create a new button element
+        const newButton = document.createElement("a");
+        newButton.classList.add("color");
+        newButton.style.backgroundColor = colorName;
+
+        setTimeout(() => {
+            const computedColor = getComputedStyle(newButton).backgroundColor;
+
+            newButton.style.color = getContrastingTextColor(computedColor);
+            newButton.innerHTML = `
+                ${colorName}<p>${computedColor}</p>
+                <button class="deleteBtn">Delete</button>
+            `;
+
+            const deleteBtn = newButton.querySelector(".deleteBtn");
+            deleteBtn.onclick = function (event) {
+                event.stopPropagation();
+                newButton.remove();
+                document.body.style.backgroundColor = "white";
+            };
+
+        }, 0);
+
+        newButton.onclick = () => {
+            resetFontSizes();
+            document.body.style.backgroundColor = colorName;
+            newButton.style.transform = "scale(1.5)"
+        };
+
+        // Append the new button to the button group
+        const buttonGroup = document.querySelector(".button-group");
+        buttonGroup.appendChild(newButton);
+    }
+
+    function getContrastingTextColor(color) {
+        let r = 0, g = 0, b = 0;
+
+        if (color.startsWith("rgb")) {
+            // Extract RGB values from rgb(r, g, b) or rgba(r, g, b, a)
+            const rgb = color.match(/\d+/g);
+            if (rgb && rgb.length >= 3) {
+                [r, g, b] = rgb.map(Number);
+            }
+        } else if (color.startsWith("#")) {
+            // Handle hex color codes
+            const hex = color.slice(1);
+            if (hex.length === 3) {
+                // Short hex #rgb
+                r = parseInt(hex[0] + hex[0], 16);
+                g = parseInt(hex[1] + hex[1], 16);
+                b = parseInt(hex[2] + hex[2], 16);
+            } else if (hex.length === 6) {
+                // Full hex #rrggbb
+                r = parseInt(hex.substr(0, 2), 16);
+                g = parseInt(hex.substr(2, 2), 16);
+                b = parseInt(hex.substr(4, 2), 16);
+            }
+        }
+
+        console.log("Extracted RGB values for luminance:", r, g, b);
+
+        const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+        return luminance > 0.5 ? "black" : "white";
+    }
+
+    document.body.addEventListener("click", function (e) {
+        const isColorButton = e.target.closest(".color");
+        if (!isColorButton) {
+            resetFontSizes();
+        }
+    });
+
+    </script>
+
+</body>
+</html>
