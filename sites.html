@@ -9,31 +9,45 @@
     <!-- FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-        
+      /* Light Mode */
         body {
             margin: 0;
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(to bottom right, #f8f9fa, #ffffff);
             color: #333;
             line-height: 1.6;
+            transition: background 0.3s ease, color 0.3s ease;
         }
-    
-        a {
-            text-decoration: none;
+
+        /* Dark Mode */
+        body.dark-mode {
+            background: linear-gradient(to bottom right, #121212, #1e1e1e);
+            color: #fff;
+        }
+
+        a, .highlight {
             color: #007BFF;
+            transition: color 0.3s ease;
         }
-    
+
         a:hover {
             text-decoration: underline;
             color: #0056b3;
         }
-    
-        /* Navigation Bar */
+
+        a.dark-mode, .highlight.dark-mode {
+            color: #64b5f6;
+        }
+
         .topnav {
             overflow: hidden;
             border-radius: 5px;
         }
-    
+
+        .topnav.dark-mode {
+            background: #333;
+        }
+
         .topnav a {
             color: #007BFF;
             padding: 10px 20px;
@@ -41,11 +55,20 @@
             display: inline-block;
             transition: background-color 0.3s ease;
         }
-    
+
+        .topnav a.dark-mode {
+            color: #fff;
+        }
+
         .topnav a.active, .topnav a:hover {
             background: #007BFF;
             color: #fff;
             border-radius: 5px;
+        }
+
+        .topnav a.dark-mode:hover {
+            background: #007BFF;
+            color: #fff;
         }
     
         /* Container */
@@ -179,9 +202,30 @@
                 gap: 10px;
             }
         }
+
+        /* Switch styles */
+        #mode-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        #mode-switch:hover {
+            background-color: #0056b3;
+        }
     </style>    
 </head>
 <body>
+
+    <!-- Dark Mode Switch Button -->
+    <button id="mode-switch">Toggle Dark Mode</button>
 
     <!-- Main Container -->
     <div class="container">
@@ -253,5 +297,32 @@
         </div>
 
     </div>
+
+<script>
+    function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+        const elements = document.querySelectorAll('.topnav a, .highlight, a');
+        elements.forEach(el => el.classList.toggle('dark-mode'));
+
+        // Save the dark mode status in localStorage
+        if (document.body.classList.contains("dark-mode")) {
+            localStorage.setItem("darkMode", "enabled");
+        } else {
+            localStorage.setItem("darkMode", "disabled");
+        }
+    }
+
+    window.addEventListener("load", () => {
+        const savedMode = localStorage.getItem("darkMode");
+        if (savedMode === "enabled") {
+            document.body.classList.add("dark-mode");
+            const elements = document.querySelectorAll('.topnav a, .highlight, a');
+            elements.forEach(el => el.classList.add('dark-mode'));
+        }
+    });
+
+    document.getElementById("mode-switch").addEventListener("click", toggleDarkMode);
+</script>
+    
 </body>
 </html>
