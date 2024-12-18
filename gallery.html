@@ -9,7 +9,7 @@
     <!-- FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-        /* Light Mode */
+        
         body {
             margin: 0;
             font-family: 'Poppins', sans-serif;
@@ -17,12 +17,6 @@
             color: #333;
             line-height: 1.6;
             transition: background 0.3s ease, color 0.3s ease;
-        }
-
-        /* Dark Mode */
-        body.dark-mode {
-            background: linear-gradient(to bottom right, #121212, #1e1e1e);
-            color: #fff;
         }
 
         a, .highlight {
@@ -35,17 +29,9 @@
             color: #0056b3;
         }
 
-        a.dark-mode, .highlight.dark-mode {
-            color: #64b5f6;
-        }
-
         .topnav {
             overflow: hidden;
             border-radius: 5px;
-        }
-
-        .topnav.dark-mode {
-            background: #333;
         }
 
         .topnav a {
@@ -56,19 +42,10 @@
             transition: background-color 0.3s ease;
         }
 
-        .topnav a.dark-mode {
-            color: #fff;
-        }
-
         .topnav a.active, .topnav a:hover {
             background: #007BFF;
             color: #fff;
             border-radius: 5px;
-        }
-
-        .topnav a.dark-mode:hover {
-            background: #007BFF;
-            color: #fff;
         }
     
         /* Container */
@@ -138,14 +115,6 @@
             color: white;
             padding: 10px;
             border-radius: 5px;
-        }
-    
-        .experience, .education {
-            background: #f9f9f9;
-            padding: 10px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            margin-top: 10px;
         }
     
         /* Photography */
@@ -231,29 +200,116 @@
             }
         }
 
-        /* Switch styles */
-        #mode-switch {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 10px;
-            background: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
+        /* Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2.5rem;
+            padding: 0rem;
+            justify-items: center;
         }
+
+        .gallery-item {
+            position: relative;
+            width: 15rem;
+            height: 15rem;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background: #f8f8f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+
         
-        #mode-switch:hover {
-            background-color: #0056b3;
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .gallery-item h1 {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            margin: 0;
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+            padding: 5px 10px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 4px;
+            z-index: 1;
+            text-align: center;
+            max-width: 90%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 80%;
+            max-height: 80%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-content:hover {
+            transform: scale(1.02);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        #caption {
+            margin: 15px auto;
+            text-align: center;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        /* Close Button */
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover, .close:focus {
+            color: #bbb;
+            text-decoration: none;
         }
     </style>    
 </head>
 <body>
-
-    <!-- Dark Mode Switch Button -->
-    <!-- <button id="mode-switch">Toggle Dark Mode</button> -->
 
     <!-- Main Container -->
     <div class="container">
@@ -296,37 +352,80 @@
             <section class="section">
                 <h2>Gallery</h2>
                 <div class="photography">
+
+                    <div class="gallery">
+
+                        <div class="gallery-item">
+                            <h1>Evening Sky Above Abra</h1>
+                            <img class="photo" src="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image1L.jpg?raw=true" 
+                                alt="Evening Sky Above Abra" onclick="openModal(this)">
+                        </div>
+    
+                        <div class="gallery-item">
+                            <h1>Sunset Over The Beach</h1>
+                            <img class="photo" src="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image2L.JPG?raw=true" 
+                                alt="Sunset Over The Beach" onclick="openModal(this)">
+                        </div>
+                        
+                        <div class="gallery-item">
+                            <h1>View From Kankantuban</h1>
+                            <img class="photo" src="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image3L.JPG?raw=true" 
+                                alt="View From Kankantuban" onclick="openModal(this)">
+                        </div>
+                        
+                        <div class="gallery-item">
+                            <h1>Rainbow Over My Barangay</h1>
+                            <img class="photo" src="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image4L.JPG?raw=true" 
+                                alt="Rainbow Over My Barangay" onclick="openModal(this)">
+                        </div>
+                        
+                        <div class="gallery-item">
+                            <h1>Siamese Cat</h1>
+                            <img class="photo" src="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image5L.JPG?raw=true" 
+                                alt="Siamese Cat" onclick="openModal(this)">
+                        </div>
+                        
+                        <div class="gallery-item">
+                            <h1>Water Tower</h1>
+                            <img class="photo" src="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image6P.JPG?raw=true" 
+                                alt="Water Tower" onclick="openModal(this)">
+                        </div>
+                        
+                        <div class="gallery-item">
+                            <h1>Dogs</h1>
+                            <img class="photo" src="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image7P.JPG?raw=true" 
+                                alt="Dogs" onclick="openModal(this)">
+                        </div>
+                        
+                        <div class="gallery-item">
+                            <h1>Waterfall</h1>
+                            <img class="photo" src="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image8P.JPG?raw=true" 
+                                alt="Waterfall" onclick="openModal(this)">
+                        </div>
+                        
+                        <div class="gallery-item">
+                            <h1>Vape</h1>
+                            <img class="photo" src="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image9P.JPG?raw=true" 
+                                alt="Vape" onclick="openModal(this)">
+                        </div>
+                        
+                        <div class="gallery-item">
+                            <h1>Motorcycle</h1>
+                            <img class="photo" src="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image10P.JPG?raw=true" 
+                                alt="Motorcycle" onclick="openModal(this)">
+                        </div>
+
+                    </div>
                     
-                    <h1>Evening Sky Above Abra</h1>
-                    <img class="photo" src="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image1L.jpg?raw=true" alt="Photo 1">
-
-                    <h1>Sunset Over The Beach</h1>
-                    <img class="photo" src="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image2L.JPG?raw=true" alt="Photo 2">
-
-                    <h1>View From Kankantuban</h1>
-                    <img class="photo" src="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image3L.JPG?raw=true" alt="Photo 3">
-
-                    <h1>Rainbow Over My Barangay</h1>
-                    <img class="photo" src="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image4L.JPG?raw=true" alt="Photo 4">
-
-                    <h1>Siamese Cat</h1>
-                    <img class="photo" src="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image5L.JPG?raw=true" alt="Photo 5">
-
-                    <h1>Water Tower</h1>
-                    <img class="photo" src="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image6P.JPG?raw=true" alt="Photo 6">
-
-                    <h1>Dogs</h1>
-                    <img class="photo" src="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image7P.JPG?raw=true" alt="Photo 7">
-
-                    <h1>Waterfall</h1>
-                    <img class="photo" src="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image8P.JPG?raw=true" alt="Photo 8">
-
-                    <h1>Vape</h1>
-                    <img class="photo" src="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image9P.JPG?raw=true" alt="Photo 9">
-
-                    <h1>Motorcycle</h1>
-                    <img class="photo" src="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image10P.JPG?raw=true" alt="Photo 10">
                 </div>
+
+                <!-- Modal -->
+                <div id="imageModal" class="modal">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <img class="modal-content" id="modalImage">
+                    <div id="caption"></div>
+                </div>
+
             </section>
 
             <!-- Video Section -->
@@ -350,29 +449,20 @@
     </div>
 
 <script>
-    function toggleDarkMode() {
-        document.body.classList.toggle("dark-mode");
-        const elements = document.querySelectorAll('.topnav a, .highlight, a');
-        elements.forEach(el => el.classList.toggle('dark-mode'));
+    function openModal(element) {
+        const modal = document.getElementById("imageModal");
+        const modalImage = document.getElementById("modalImage");
+        const caption = document.getElementById("caption");
 
-        // Save the dark mode status in localStorage
-        if (document.body.classList.contains("dark-mode")) {
-            localStorage.setItem("darkMode", "enabled");
-        } else {
-            localStorage.setItem("darkMode", "disabled");
-        }
+        modal.style.display = "block";
+        modalImage.src = element.src;
+        caption.innerHTML = element.alt;
     }
 
-    window.addEventListener("load", () => {
-        const savedMode = localStorage.getItem("darkMode");
-        if (savedMode === "enabled") {
-            document.body.classList.add("dark-mode");
-            const elements = document.querySelectorAll('.topnav a, .highlight, a');
-            elements.forEach(el => el.classList.add('dark-mode'));
-        }
-    });
-
-    document.getElementById("mode-switch").addEventListener("click", toggleDarkMode);
+    function closeModal() {
+        const modal = document.getElementById("imageModal");
+        modal.style.display = "none";
+    }
 </script>
     
 </body>
