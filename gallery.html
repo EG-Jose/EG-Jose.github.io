@@ -149,6 +149,9 @@
     </div>
 
 <script>
+    let gyroscopeRotationX = 0;
+    let gyroscopeRotationY = 0;
+    
     function openModal(element) {
         const modal = document.getElementById("imageModal");
         const modalImage = document.getElementById("modalImage");
@@ -158,18 +161,23 @@
         modalImage.src = element.src;
         caption.innerHTML = element.alt;
 
+        // Add event listeners
         modal.addEventListener("mousemove", apply3DEffect);
         modalImage.addEventListener("mouseenter", onMouseEnter);
         modalImage.addEventListener("mouseleave", onMouseLeave);
+        window.addEventListener("deviceorientation", applyGyroscopeEffect);
     }
 
     function closeModal() {
         const modal = document.getElementById("imageModal");
         modal.style.display = "none";
 
+        // Remove event listeners
         modal.removeEventListener("mousemove", apply3DEffect);
+        const modalImage = document.getElementById("modalImage");
         modalImage.removeEventListener("mouseenter", onMouseEnter);
         modalImage.removeEventListener("mouseleave", onMouseLeave);
+        window.removeEventListener("deviceorientation", applyGyroscopeEffect);
     }
 
     function apply3DEffect(event) { // ChatGPT LOL
@@ -186,8 +194,12 @@
         const rotateX = (mouseY / modalHeight - 0.5) * 20;  // Tilt on X axis
         const rotateY = (mouseX / modalWidth - 0.5) * -20;  // Tilt on Y axis
 
-        // Apply the 3D transform to the modal image
-        modalImage.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        // Combine the mouse rotation with the gyroscope rotation
+        const totalRotateX = rotateX + gyroscopeRotationX;
+        const totalRotateY = rotateY + gyroscopeRotationY;
+
+        // Apply the combined 3D transform to the modal image
+        modalImage.style.transform = `perspective(1000px) rotateX(${totalRotateX}deg) rotateY(${totalRotateY}deg)`;
     }
 
     // Function to reset the image back to its original state smoothly
@@ -200,6 +212,21 @@
         const modalImage = document.getElementById("modalImage");
         modalImage.style.transition = "transform 0.3s ease-out"; // Smooth transition when leaving
         modalImage.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg)"; // Reset the rotation
+    }
+
+    function applyGyroscopeEffect(event) {
+        const modalImage = document.getElementById("modalImage");
+
+        // Get the device's orientation data (beta, gamma, alpha)
+        const beta = event.beta;  // Tilt left/right (x-axis)
+        const gamma = event.gamma;  // Tilt forward/backward (y-axis)
+
+        // Apply these values to rotate the image in 3D space
+        gyroscopeRotationX = (beta) ? (beta / 90) * 20 : 0;  // X-axis rotation
+        gyroscopeRotationY = (gamma) ? (gamma / 90) * -20 : 0;  // Y-axis rotation
+
+        // Apply the 3D transform to the modal image, using the gyroscope effect
+        modalImage.style.transform = `perspective(1000px) rotateX(${gyroscopeRotationX}deg) rotateY(${gyroscopeRotationY}deg)`;
     }
 </script>
     
