@@ -4,182 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sites</title>
+
+    <link rel="stylesheet" type="text/css" href="/Resume/color.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <!-- FontAwesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-        
-        body {
-            margin: 0;
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(to bottom right, #f8f9fa, #ffffff);
-            color: #333;
-            line-height: 1.6;
-            transition: background 0.3s ease, color 0.3s ease;
-        }
-
-        a, .highlight {
-            color: #007BFF;
-            transition: color 0.3s ease;
-        }
-
-        a:hover {
-            text-decoration: underline;
-            color: #0056b3;
-        }
-
-        .topnav {
-            overflow: hidden;
-            border-radius: 5px;
-        }
-
-        .topnav a {
-            color: #007BFF;
-            padding: 10px 20px;
-            text-transform: uppercase;
-            display: inline-block;
-            transition: background-color 0.3s ease;
-        }
-
-        .topnav a.active, .topnav a:hover {
-            background: #007BFF;
-            color: #fff;
-            border-radius: 5px;
-        }
-    
-        /* Container */
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            margin: 20px;
-            gap: 20px;
-        }
-    
-        .column {
-            flex: 1;
-            background: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-    
-        /* Left Column */
-        .left {
-            max-width: 300px;
-            text-align: center;
-        }
-    
-        .pfp {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            margin-bottom: 10px;
-            border: 3px solid #007BFF;
-        }
-    
-        .contact_section h2 {
-            border-bottom: 2px solid #007BFF;
-            padding-bottom: 10px;
-        }
-    
-        .contact {
-            margin: 10px 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-    
-        .fbButton {
-            padding: 5px 10px;
-            background: #007BFF;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-    
-        .fbButton:hover {
-            background: #0056b3;
-        }
-    
-        /* Right Column */
-        .section {
-            margin-bottom: 20px;
-        }
-    
-        .section h2 {
-            background: #007BFF;
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-        }
-    
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .container {
-                flex-direction: column;
-                gap: 15px;
-            }
-    
-            .left {
-                max-width: 100%;
-                text-align: center;
-            }
-    
-            .pfp {
-                width: 120px;
-                height: 120px;
-            }
-    
-            .column {
-                padding: 15px;
-            }
-    
-            .section h2 {
-                font-size: 1.2em;
-            }
-    
-            .fbButton {
-                font-size: 14px;
-                padding: 4px 8px;
-            }
-        }
-    
-        @media (max-width: 768px) {
-            .topnav a {
-                padding: 8px 16px;
-                font-size: 14px;
-            }
-    
-            .contact_section h2 {
-                font-size: 1.1em;
-            }
-    
-            .contact {
-                font-size: 14px;
-            }
-    
-            .column {
-                padding: 10px;
-            }
-    
-            .pfp {
-                width: 80px;
-                height: 80px;
-            }
-    
-            .fbButton {
-                font-size: 14px;
-                padding: 4px 8px;
-            }
-    
-            .container {
-                gap: 10px;
-            }
-        }
-    </style>    
+    <script src="https://kit.fontawesome.com/b9d5bac5fa.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -221,10 +51,10 @@
             </div>
 
             <section class="section">
-                <h2>Projects</h2>
+                <h2><i class="fa-solid fa-code"></i> Projects</h2>
                 <p style="text-align: left;">Here is where I'll put my projects.    <a href="https://github.com/EG-Jose/EG-Jose.github.io">Github Repository</a></p>
-                
-                <h1>Websites</h1>
+                <p style="text-align: left;">Note: The one with 'PHP' will not open the website but instead will navigate to the folder they're in within the repository.</p>
+                <h3>Websites</h3>
 
                 <div>
                     <a href="https://eg-jose.github.io/Snake/" target="_blank">Snake</a>
@@ -244,7 +74,7 @@
             </section>
 
             <section class="section">
-                <h1>Others</h1>
+                <h3>Others</h3>
 
                 <div>
                     <a href="https://eg-jose.github.io/MQ/MQ1/JOSE_ERIC_GODWIN_MQ1.html" target="_blank">Midterm Quiz 1</a>
