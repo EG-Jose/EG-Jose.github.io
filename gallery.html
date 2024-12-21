@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallery</title>
 
-    <link rel="stylesheet" type="text/css" href="/Resume/color.css">
+    <link rel="stylesheet" type="text/css" href="Resume/color.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <!-- FontAwesome for icons -->
@@ -165,6 +165,7 @@
         modal.addEventListener("mousemove", apply3DEffect);
         modalImage.addEventListener("mouseenter", onMouseEnter);
         modalImage.addEventListener("mouseleave", onMouseLeave);
+        modal.addEventListener("click", closeModalOnOutsideClick);
         window.addEventListener("deviceorientation", applyGyroscopeEffect);
     }
 
@@ -177,7 +178,17 @@
         const modalImage = document.getElementById("modalImage");
         modalImage.removeEventListener("mouseenter", onMouseEnter);
         modalImage.removeEventListener("mouseleave", onMouseLeave);
+        modal.removeEventListener("click", closeModalOnOutsideClick);
         window.removeEventListener("deviceorientation", applyGyroscopeEffect);
+    }
+
+    function closeModalOnOutsideClick(event) {
+        const modalImage = document.getElementById("modalImage");
+
+        // Check if the clicked target is not the image
+        if (event.target !== modalImage) {
+            closeModal();
+        }
     }
 
     function apply3DEffect(event) { // ChatGPT LOL
@@ -214,7 +225,7 @@
         modalImage.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg)"; // Reset the rotation
     }
 
-    function applyGyroscopeEffect(event) {
+    function applyGyroscopeEffect(event) { // Doesnt work
         const modalImage = document.getElementById("modalImage");
 
         // Get the device's orientation data (beta, gamma, alpha)
