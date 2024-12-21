@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resume</title>
 
-    <link rel="stylesheet" type="text/css" href="/Resume/color.css">
+    <link rel="stylesheet" type="text/css" href="Resume/color.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <!-- FontAwesome for icons -->
@@ -52,20 +52,21 @@
 
             <section class="section">
                 <h2><i class="fa fa-school"></i> Education</h2>
-                <div class="education">
+                <div class="info-container">
                     <h3>Senior High School Graduate</h3>
                     <p>Graduated High School at <a class="links" href="https://www.facebook.com/lidliddanhs/">Lidlidda National High School</p></a>
+                    
+                    <h3>IT Undergraduate</h3>
                     <p>Currently studying IT at <a class="links" href="https://ispsc.edu.ph/campuses/candon-city-campus/">Ilocos Sur Polythecnic State College</p></a>
                 </div>
             </section>
 
             <section class="section">
                 <h2><i class="fa fa-briefcase"></i> Work Experience</h2>
-                <div class="experience">
+                <div class="info-container">
                     <h3>Computer Repair</h3>
                     <p>Experience in diagnosing and repairing hardware/software issues.</p>
-                </div>
-                <div class="experience">
+
                     <h3>Construction</h3>
                     <p>Worked in manual labor, learning teamwork and project management.</p>
                 </div>
@@ -73,12 +74,11 @@
 
             <section class="section">
                 <h2><i class="fa fa-person"></i></i></i> Skills</h2>
-                <div class="experience">
+                <div class="info-container">
                     <h3>Programming</h3>
                     <p>Proficient in <span class="highlight">Web Development</span> and <span class="highlight">Web Design</span>.</p>
                     <p>I know the basics of <span class="highlight">Java</span>, <span class="highlight">C++</span> and <span class="highlight">Kotlin</span>.</p>
-                </div>
-                <div class="experience">
+
                     <h3>Communication</h3>
                     <p>Improving verbal and written communication to collaborate better in teams.</p>
                 </div>
@@ -86,12 +86,27 @@
 
             <section class="section">
                 <h2><i class="fa fa-bars"></i> Hobbies</h2>
-                <div class="experience">
+                <div class="info-container">
                     <p>Playing guitar, photography, and riding motorcycles with friends.</p>
                 </div>
             </section>
         </div>
     </div>
+
+<script>
+    document.querySelectorAll('a').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            if (this.getAttribute("href").startsWith("#")) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute("href"));
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+</script>    
 
 </body>
 </html>
