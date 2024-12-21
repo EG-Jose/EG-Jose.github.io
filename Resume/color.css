@@ -1,20 +1,38 @@
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    background: #121212;
+    background: black;
     color: #333;
     line-height: 1.6;
     height: 100%;
 }
 
+:root {
+    --clr-a0: #2e5dd3;
+    --clr-a10: #526dd8;
+    --clr-a20: #6c7ede;
+    --clr-a30: #848fe3;
+    --clr-a40: #9aa1e8;
+    --clr-a50: #afb3ed;
+
+    --clr-b0: #121212;
+    --clr-b10: #282828;
+    --clr-b20: #3f3f3f;
+    --clr-b30: #575757;
+    --clr-b40: #717171;
+    --clr-b50: #8b8b8b;
+} 
+
+
 a, .highlight {
-    color: #2e5dd3;
-    transition: color 0.3s ease;
+    color: var(--clr-a30);
+    transition: color 0.5s ease;
 }
 
 a:hover {
     text-decoration: underline;
     color: #0056b3;
+    transition: color 0.5s ease;
 }
 
 .topnav {
@@ -23,16 +41,17 @@ a:hover {
 }
 
 .topnav a {
-    color: #2e5dd3;
+    color: var(--clr-a30);
     padding: 10px 20px;
     text-transform: uppercase;
     display: inline-block;
-    transition: background-color 0.3s ease;
+    border-radius: 5px;
+    transition: background-color 0.5s ease;
 }
 
 .topnav a.active, .topnav a:hover {
-    background: #526dd8;
-    color: #fff;
+    background: var(--clr-a10);
+    color: white;
     border-radius: 5px;
 }
 
@@ -45,7 +64,7 @@ a:hover {
 
 .column {
     flex: 1 1;
-    background: #282828;
+    background: var(--clr-b10);
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -67,12 +86,12 @@ a:hover {
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    border: 3px solid #2e5dd3;
+    border: 3px solid var(--clr-a0);
     object-fit: cover;
 }
 
 .contact_section h2 {
-    border-top: 2px solid #2e5dd3;
+    border-top: 2px solid var(--clr-a0);
     margin-bottom: 0.5rem;
 }
 
@@ -89,10 +108,16 @@ a:hover {
     font-size: 1rem;
 }
 
+.meet h1 {
+    font-size: 2rem;
+    padding: 0rem;
+    margin: 0rem;
+}
+
 .fbButton {
     padding: 5px 10px;
-    background: #007BFF;
-    color: #fff;
+    background: var(--clr-a0);
+    color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -127,21 +152,44 @@ a:hover {
     font-size: 1.25rem;
 }
 
-.meet h1 {
-    font-size: 2rem;
-    padding: 0rem;
-    margin: 0rem;
-}
-
 .section {
     margin-bottom: 20px;
 }
 
 .section h2 {
-    background: #3f3f3f;
+    background: var(--clr-b20);
     color: white;
     padding: 10px;
     border-radius: 5px;
+}
+
+.section {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 1s forwards;
+}
+
+.section:nth-child(1) {
+    animation-delay: 0.3s;
+}
+
+.section:nth-child(2) {
+    animation-delay: 0.6s;
+}
+
+.section:nth-child(3) {
+    animation-delay: 0.9s;
+}
+
+.section:nth-child(4) {
+    animation-delay: 1.2s;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Responsive Shit */
@@ -211,7 +259,7 @@ a:hover {
 }
 
 .right i, .left i {
-    color: #9aa1e8;
+    color: var(--clr-a10);
 }
 
 /* Gallery Page Specific =================================================*/ 
@@ -230,6 +278,52 @@ a:hover {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
+.gallery-item {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 1s forwards;
+}
+
+.gallery-item:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.gallery-item:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.gallery-item:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.gallery-item:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.gallery-item:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.gallery-item:nth-child(6) {
+    animation-delay: 0.6s;
+}
+
+.gallery-item:nth-child(7) {
+    animation-delay: 0.7s;
+}
+
+.gallery-item:nth-child(8) {
+    animation-delay: 0.8s;
+}
+
+.gallery-item:nth-child(9) {
+    animation-delay: 0.9s;
+}
+
+.gallery-item:nth-child(10) {
+    animation-delay: 1s;
+}
+
 /* Youtube Videos */
 .ytVideo {
     width: 100%;
@@ -237,13 +331,13 @@ a:hover {
     aspect-ratio: 16 / 9;
     margin: 10px auto;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .ytVideo:hover {
     transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 .gallery-yt {
