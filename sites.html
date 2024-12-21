@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sites</title>
 
-    <link rel="stylesheet" type="text/css" href="/Resume/color.css">
+    <link rel="stylesheet" type="text/css" href="Resume/color.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <!-- FontAwesome for icons -->
@@ -54,44 +54,51 @@
                 <h2><i class="fa-solid fa-code"></i> Projects</h2>
                 <p style="text-align: left;">Here is where I'll put my projects.    <a href="https://github.com/EG-Jose/EG-Jose.github.io">Github Repository</a></p>
                 <p style="text-align: left;">Note: The one with 'PHP' will not open the website but instead will navigate to the folder they're in within the repository.</p>
-                <h3>Websites</h3>
+            </section>
 
-                <div>
-                    <a href="https://eg-jose.github.io/Snake/" target="_blank">Snake</a>
-                </div>
-                <div>
-                    <a href="https://eg-jose.github.io/Coffee Please/" target="_blank">Coffee Please</a>
-                </div>
-                <div>
-                    <a href="https://github.com/EG-Jose/EG-Jose.github.io/tree/main/CoffeePleaseV1.1/" target="_blank">Coffee Please (V1.1) PHP</a>
-                </div>
-                <div>
-                    <a href="https://eg-jose.github.io/Mobile Gitz/" target="_blank">Mobile Gitz</a>
-                </div>
-                <div>
-                    <a href="https://github.com/EG-Jose/EG-Jose.github.io/tree/main/transacSystem" target="_blank">Transaction System PHP</a>
-                </div>
+            <section class="section">    
+                <h3>Websites</h3>
+                    <ul>
+                        <li><a href="https://eg-jose.github.io/Snake/" target="_blank">Snake</a></li>
+                            <p style="margin-left: 1rem;font-size: 0.75rem;">A snake game</p>
+                        <li><a href="https://eg-jose.github.io/Coffee Please/" target="_blank">Coffee Please</a></li>
+                            <p style="margin-left: 1rem;font-size: 0.75rem;">The first version of Coffee Please</p>
+                        <li><a href="https://github.com/EG-Jose/EG-Jose.github.io/tree/main/CoffeePleaseV1.1/" target="_blank">Coffee Please (V1.1) PHP</a></li>
+                            <p style="margin-left: 1rem;font-size: 0.75rem;">A better and cleaner version of Coffee Please</p>
+                        <li><a href="https://eg-jose.github.io/Mobile Gitz/" target="_blank">Mobile Gitz</a></li>
+                            <p style="margin-left: 1rem;font-size: 0.75rem;">An index website of mobile devices</p>
+                        <li><a href="https://github.com/EG-Jose/EG-Jose.github.io/tree/main/transacSystem" target="_blank">Transaction System PHP</a></li>
+                            <p style="margin-left: 1rem;font-size: 0.75rem;">Mainly a showcase of a Transaction System</p>
+                    </ul>
             </section>
 
             <section class="section">
                 <h3>Others</h3>
-
-                <div>
-                    <a href="https://eg-jose.github.io/MQ/MQ1/JOSE_ERIC_GODWIN_MQ1.html" target="_blank">Midterm Quiz 1</a>
-                </div>
-                <div>
-                    <a href="https://eg-jose.github.io/MQ/MQ2/JOSE, EG_MQ2.html" target="_blank">Midterm Quiz 2</a>
-                </div>
-                <div>
-                    <a href="https://eg-jose.github.io/color/" target="_blank">Color Picker</a>
-                </div>
-                <div>
-                    <a href="https://eg-jose.github.io/logsign/" target=_blank">Login/Signup Style</a>
-                </div>
+                    <ul>
+                        <li><a href="https://eg-jose.github.io/MQ/MQ1/JOSE_ERIC_GODWIN_MQ1.html" target="_blank">Midterm Quiz 1</a></li>
+                        <li><a href="https://eg-jose.github.io/MQ/MQ2/JOSE, EG_MQ2.html" target="_blank">Midterm Quiz 2</a></li>
+                        <li><a href="https://eg-jose.github.io/color/" target="_blank">Color Picker</a></li>
+                        <li><a href="https://eg-jose.github.io/logsign/" target="_blank">Login/Signup Style</a></li>
+                    </ul>
             </section>
         </div>
 
     </div>
+
+<script>
+    document.querySelectorAll('a').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            if (this.getAttribute("href").startsWith("#")) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute("href"));
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+</script>
     
 </body>
 </html>
