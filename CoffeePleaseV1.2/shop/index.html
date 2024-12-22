@@ -1,0 +1,568 @@
+<!-- <?php
+
+$mysqli = require $_SERVER['DOCUMENT_ROOT'] . "/coffeepleasev1.1/database.php";
+
+$drinks_base_url = '../add/drinks/image/';
+$foods_base_url = '../add/foods/image/';
+
+$drinks_sql = "SELECT * FROM drinks";
+$foods_sql = "SELECT * FROM foods";
+
+$drinks_result = $mysqli->query($drinks_sql);
+$foods_result = $mysqli->query($foods_sql);
+
+?> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caffeine Cove | Shop</title>
+     
+    <link rel="stylesheet" type="text/css" href="/CoffeePleaseV1.2/style/main.css">
+    <link rel="icon" type="image/x-icon" href="/CoffeePleaseV1.2/images/favicon.png">
+    <script src="https://kit.fontawesome.com/b9d5bac5fa.js" crossorigin="anonymous"></script>
+
+</head>
+
+    <header class="navbar">
+        <!-- <?php include 'object/header.php'; ?> -->
+        
+        <link rel="stylesheet" href="/CoffeePleaseV1.2/style/navbar.css">
+        <div class="logo">
+            <img src="/CoffeePleaseV1.2/images/caffinecove.png">
+        </div>
+        <ul class="navbar-links">
+            <li><a href="/CoffeePleaseV1.2/index.html">Home</a></li>
+            <li><a href="/CoffeePleaseV1.2shop/">Shop</a></li>
+            <li><a href="/CoffeePleaseV1.2/about.html">About Us</a></li>
+            <li><a class="cartBtn" id="openCartBtn"><i class="fa fa-cart-shopping"></i> Cart</a></li>
+        </ul>
+        <nav>
+            <ul class="social-icons">
+                <li>
+                    <div class="search-bar">
+                        <i class="fa fa-magnifying-glass"></i><input type="text" class="mysearch" onkeyup="searchStudent()" placeholder="Search..">
+                    </div>
+                </li>
+                <li><a><i class="fa fa-facebook"></i></a></li>
+                <li><a><i class="fa fa-twitter"></i></a></li>
+                <li><a><i class="fa fa-instagram"></i></a></li>
+                <li><a><i class="fa fa-youtube"></i></a></li>
+            </ul>
+        </nav>
+
+        <div id="cartPanel" class="cart-panel">
+            <h3>Cart</h3>
+            <h2>Your Items</h2>
+                <div class="cart-items"></div>
+            <div class="cart-total">
+                <p>Total: <span id="cartPrice">₱0.00</span></p>
+                <p>Items in Cart: <span id="cartCount">0</span></p>
+            </div>
+            <div class="cart-items">
+                <h4>You might like</h4>
+            </div>
+        </div>
+    </header>
+
+<body>
+    <main>
+        <section class="about">
+            <div class="text-container products">
+                <img id="productImage" src="/CoffeePleaseV1.2/images/products.png">
+            </div>
+        </section>
+
+        <section class="product-list">
+            <a href="/CoffeePleaseV1.2/shop/index.html" class="scroll-link">All Products</a>
+            <a href="/CoffeePleaseV1.2/shop/drinks.html" class="scroll-link">Drinks</a>
+            <a href="/CoffeePleaseV1.2/shop/foods.html" class="scroll-link">Foods</a>
+        </section>
+
+        <!--  =====================================================================================================================  -->
+        <!--  =====================================================================================================================  -->
+
+        <div class="heading"><!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!MENU!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+            <h2>Menu</h2>
+        </div>
+
+            <div class="container">
+
+            <!-- <?php
+                include '../object/item-drinks.php';
+                include '../object/item-foods.php';
+            ?> -->
+
+                <div class="item">
+                    <a href="#" class="view-item">
+                        <p class="view">View</p>
+                        <img src="/CoffeePleaseV1.2/add/drinks/image/item1.jpg" class="item-img">
+                    </a>
+                    <div class="item-details devide">
+                        <div class="devide name">
+                            <p class="item-name">Turbo-Charged Drip Sludge</p>
+                        </div>
+                        <div class="devide price">
+                            <p class="item-price">₱ 150</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <a href="#" class="view-item">
+                        <p class="view">View</p>
+                        <img src="/CoffeePleaseV1.2/add/drinks/image/item2.jpg" class="item-img">
+                    </a>
+                    <div class="item-details devide">
+                        <div class="devide name">
+                            <p class="item-name">Mocha Nebula Fizz</p>
+                        </div>
+                        <div class="devide price">
+                            <p class="item-price">₱ 150</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <a href="#" class="view-item">
+                        <p class="view">View</p>
+                        <img src="/CoffeePleaseV1.2/add/drinks/image/item3.jpg" class="item-img">
+                    </a>
+                    <div class="item-details devide">
+                        <div class="devide name">
+                            <p class="item-name">Looks Like Glazing On Top</p>
+                        </div>
+                        <div class="devide price">
+                            <p class="item-price">₱ 10</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <a href="#" class="view-item">
+                        <p class="view">View</p>
+                        <img src="/CoffeePleaseV1.2/add/drinks/image/item4.jpg" class="item-img">
+                    </a>
+                    <div class="item-details devide">
+                        <div class="devide name">
+                            <p class="item-name">Caffeinated Lava Swirl</p>
+                        </div>
+                        <div class="devide price">
+                            <p class="item-price">₱ 150</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <a href="#" class="view-item">
+                        <p class="view">View</p>
+                        <img src="/CoffeePleaseV1.2/add/drinks/image/item5.webp" class="item-img">
+                    </a>
+                    <div class="item-details devide">
+                        <div class="devide name">
+                            <p class="item-name">Sprocket Brew Deluxe</p>
+                        </div>
+                        <div class="devide price">
+                            <p class="item-price">₱ 150</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <a href="#" class="view-item">
+                        <p class="view">View</p>
+                        <img src="/CoffeePleaseV1.2/add/drinks/image/item6.jpg" class="item-img">
+                    </a>
+                    <div class="item-details devide">
+                        <div class="devide name">
+                            <p class="item-name">Hyperbean Oscillation</p>
+                        </div>
+                        <div class="devide price">
+                            <p class="item-price">₱ 150</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <a href="#" class="view-item">
+                        <p class="view">View</p>
+                        <img src="/CoffeePleaseV1.2/add/drinks/image/item7.jpg" class="item-img">
+                    </a>
+                    <div class="item-details devide">
+                        <div class="devide name">
+                            <p class="item-name">Quantum Roast Anomaly</p>
+                        </div>
+                        <div class="devide price">
+                            <p class="item-price">₱ 150</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <a href="#" class="view-item">
+                        <p class="view">View</p>
+                        <img src="/CoffeePleaseV1.2/add/drinks/image/item8.webp" class="item-img">
+                    </a>
+                    <div class="item-details devide">
+                        <div class="devide name">
+                            <p class="item-name">Espresso Yeti Brew</p>
+                        </div>
+                        <div class="devide price">
+                            <p class="item-price">₱ 150</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <a href="#" class="view-item">
+                        <p class="view">View</p>
+                        <img src="/CoffeePleaseV1.2/add/drinks/image/item9.webp" class="item-img">
+                    </a>
+                    <div class="item-details devide">
+                        <div class="devide name">
+                            <p class="item-name">Percolation Pandemonium</p>
+                        </div>
+                        <div class="devide price">
+                            <p class="item-price">₱ 150</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <a href="#" class="view-item">
+                        <p class="view">View</p>
+                        <img src="/CoffeePleaseV1.2/add/drinks/image/item10.webp" class="item-img">
+                    </a>
+                    <div class="item-details devide">
+                        <div class="devide name">
+                            <p class="item-name">Caramelized Nebula Puff</p>
+                        </div>
+                        <div class="devide price">
+                            <p class="item-price">₱ 150</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <a href="#" class="view-item">
+                        <p class="view">View</p>
+                        <img src="/CoffeePleaseV1.2/add/foods/image/item1.jpg" class="item-img">
+                    </a>
+                    <div class="item-details devide">
+                        <div class="devide name">
+                            <p class="item-name">Crunchwich Supreme</p>
+                        </div>
+                        <div class="devide price">
+                            <p class="item-price">₱ 75</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <a href="#" class="view-item">
+                        <p class="view">View</p>
+                        <img src="/CoffeePleaseV1.2/add/foods/image/item2.jpg" class="item-img">
+                    </a>
+                    <div class="item-details devide">
+                        <div class="devide name">
+                            <p class="item-name">Bread Zeppelin</p>
+                        </div>
+                        <div class="devide price">
+                            <p class="item-price">₱ 75</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <a href="#" class="view-item">
+                        <p class="view">View</p>
+                        <img src="/CoffeePleaseV1.2/add/foods/image/item3.jpg" class="item-img">
+                    </a>
+                    <div class="item-details devide">
+                        <div class="devide name">
+                            <p class="item-name">Stacked Chaos Delight</p>
+                        </div>
+                        <div class="devide price">
+                            <p class="item-price">₱ 75</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <a href="#" class="view-item">
+                        <p class="view">View</p>
+                        <img src="/CoffeePleaseV1.2/add/foods/image/item4.jpg" class="item-img">
+                    </a>
+                    <div class="item-details devide">
+                        <div class="devide name">
+                            <p class="item-name">Mystic Forest Toast</p>
+                        </div>
+                        <div class="devide price">
+                            <p class="item-price">₱ 150</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <a href="#" class="view-item">
+                        <p class="view">View</p>
+                        <img src="/CoffeePleaseV1.2/add/foods/image/item5.jpg" class="item-img">
+                    </a>
+                    <div class="item-details devide">
+                        <div class="devide name">
+                            <p class="item-name">Starch-On-Starch Symphony</p>
+                        </div>
+                        <div class="devide price">
+                            <p class="item-price">₱ 150</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <a href="#" class="view-item">
+                        <p class="view">View</p>
+                        <img src="/CoffeePleaseV1.2/add/foods/image/item6.jpg" class="item-img">
+                    </a>
+                    <div class="item-details devide">
+                        <div class="devide name">
+                            <p class="item-name">Harmony Bowl</p>
+                        </div>
+                        <div class="devide price">
+                            <p class="item-price">₱ 130</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <a href="#" class="view-item">
+                        <p class="view">View</p>
+                        <img src="/CoffeePleaseV1.2/add/foods/image/item7.jpg" class="item-img">
+                    </a>
+                    <div class="item-details devide">
+                        <div class="devide name">
+                            <p class="item-name">Ocean Dawn Plate</p>
+                        </div>
+                        <div class="devide price">
+                            <p class="item-price">₱ 140</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <a href="#" class="view-item">
+                        <p class="view">View</p>
+                        <img src="/CoffeePleaseV1.2/add/foods/image/item8.jpg" class="item-img">
+                    </a>
+                    <div class="item-details devide">
+                        <div class="devide name">
+                            <p class="item-name">Morning Sausage Medley</p>
+                        </div>
+                        <div class="devide price">
+                            <p class="item-price">₱ 130</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <a href="#" class="view-item">
+                        <p class="view">View</p>
+                        <img src="/CoffeePleaseV1.2/add/foods/image/item9.jpg" class="item-img">
+                    </a>
+                    <div class="item-details devide">
+                        <div class="devide name">
+                            <p class="item-name">Eggscape Toast</p>
+                        </div>
+                        <div class="devide price">
+                            <p class="item-price">₱ 100</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <a href="#" class="view-item">
+                        <p class="view">View</p>
+                        <img src="/CoffeePleaseV1.2/add/foods/image/item10.jpg" class="item-img">
+                    </a>
+                    <div class="item-details devide">
+                        <div class="devide name">
+                            <p class="item-name">Garden Sunrise Stack</p>
+                        </div>
+                        <div class="devide price">
+                            <p class="item-price">₱ 100</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <a href="#" class="view-item">
+                        <p class="view">View</p>
+                        <img src="/CoffeePleaseV1.2/add/foods/image/item11.jpg" class="item-img">
+                    </a>
+                    <div class="item-details devide">
+                        <div class="devide name">
+                            <p class="item-name">Beef Blades Royale</p>
+                        </div>
+                        <div class="devide price">
+                            <p class="item-price">₱ 200</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <a href="#" class="view-item">
+                        <p class="view">View</p>
+                        <img src="/CoffeePleaseV1.2/add/foods/image/item12.jpg" class="item-img">
+                    </a>
+                    <div class="item-details devide">
+                        <div class="devide name">
+                            <p class="item-name">Beef & Bloom Platter</p>
+                        </div>
+                        <div class="devide price">
+                            <p class="item-price">₱ 75</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <a href="#" class="view-item">
+                        <p class="view">View</p>
+                        <img src="/CoffeePleaseV1.2/add/foods/image/item13.jpg" class="item-img">
+                    </a>
+                    <div class="item-details devide">
+                        <div class="devide name">
+                            <p class="item-name">Golden Crunch Chunks</p>
+                        </div>
+                        <div class="devide price">
+                            <p class="item-price">₱ 150</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <a href="#" class="view-item">
+                        <p class="view">View</p>
+                        <img src="/CoffeePleaseV1.2/add/foods/image/item14.jpg" class="item-img">
+                    </a>
+                    <div class="item-details devide">
+                        <div class="devide name">
+                            <p class="item-name">Cheddar Bliss Disc </p>
+                        </div>
+                        <div class="devide price">
+                            <p class="item-price">₱ 250</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <a href="#" class="view-item">
+                        <p class="view">View</p>
+                        <img src="/CoffeePleaseV1.2/add/foods/image/item15.jpg" class="item-img">
+                    </a>
+                    <div class="item-details devide">
+                        <div class="devide name">
+                            <p class="item-name">Pepperoni Storm </p>
+                        </div>
+                        <div class="devide price">
+                            <p class="item-price">₱ 250</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!--  =====================================================================================================================  -->
+        <!--  =====================================================================================================================  -->
+        
+    </main>
+
+<!--    ITEM MODAL  -->
+    <!-- <?php include 'object/item-modal.php'; ?> -->
+
+    <link rel="stylesheet" href="/CoffeePleaseV1.2/style/modal.css">
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close"><i class="fa fa-times"></i></span>
+            <div class="modal-left">
+                <img src="" alt="" class="popup-img">
+            </div>
+            <div class="modal-right">
+                <h2 class="popup-item-name"></h2>
+                <p class="popup-item-price"></p>
+                <div class="input-group">
+                    <label for="coffee-size">Select Size:</label>
+                    <select name="coffee-size" id="coffee-size">
+                        <option value="small">Small</option>
+                        <option value="medium">Medium</option>
+                        <option value="large">Large</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" id="quantity" name="quantity" value="1" min="1">
+                </div>
+                <button type="submit" class="purchase buy" id="buy-now">Buy Now</button>
+                <button type="button" class="purchase add" id="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+<!--    LOADER  -->
+    <!-- <?php include 'object/loader.html'; ?> -->
+    
+    <link rel="stylesheet" href="/CoffeePleaseV1.2/style/loader.css">
+    <div id="loader-container">
+        <div class="steam" id="steam1"> </div>
+        <div class="steam" id="steam2"> </div>
+        <div class="steam" id="steam3"> </div>
+        <div class="steam" id="steam4"> </div>
+    
+        <div id="cup">
+            <div id="cup-body">
+                <div id="cup-shade"></div>
+            </div>
+            <div id="cup-handle"></div>
+        </div>
+    
+        <div id="saucer"></div>
+    
+        <div id="shadow"></div>
+    </div>
+
+<!--    FOOTER  -->
+
+<footer>
+    <!-- <?php include 'object/footer.html'; ?> -->
+
+    <link rel="stylesheet" href="/CoffeePleaseV1.2/style/footer.css">
+    <div class="footer">
+        <div class="row">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+            <a href="#"><i class="fa fa-youtube"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+        </div>
+        
+        <div class="row">
+            <ul>
+                <li><a href="#">Contact us</a></li>
+                <li><a href="#">Our Services</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms & Conditions</a></li>
+            </ul>
+        </div>
+        
+        <div class="row">
+            Caffeine COVE Copyright © 2023 Inferno - All rights reserved<br>
+            Previously COFFEE PLEASE
+        </div>
+    </div>
+</footer>
+
+<script type="text/javascript" src="/CoffeePleaseV1.2/js/script6.js"></script>
+
+</body>
+</html>

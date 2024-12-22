@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .checkout-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .checkout-details p {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+        .total-price {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .checkout-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        .checkout-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="checkout-container">
+        <h2>Checkout</h2>
+        <div class="checkout-details">
+            <p><strong>Item Name:</strong> <span id="item-name"></span></p>
+            <p><strong>Item Price:</strong> ₱ <span id="item-price"></span></p>
+            <p><strong>Selected Size:</strong> <span id="item-size"></span></p>
+            <p><strong>Quantity:</strong> <span id="item-quantity"></span></p>
+        </div>
+
+        <div class="total-price">
+            Total: ₱ <span id="total-price"></span>
+        </div>
+
+        <button class="checkout-btn">Proceed to Payment</button>
+    </div>
+
+    <script>
+        // Function to get URL parameters
+        function getURLParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // Extract values from URL parameters
+        const itemName = getURLParameter('item');
+        const itemPrice = parseFloat(getURLParameter('total'));
+        const selectedSize = getURLParameter('size');
+        const quantity = parseInt(getURLParameter('quantity'), 10) || 1;
+
+        // Calculate total price
+        const totalPrice = itemPrice * quantity;
+
+        // Populate the checkout page with the extracted values
+        document.getElementById('item-name').textContent = itemName;
+        document.getElementById('item-price').textContent = itemPrice.toFixed(2);
+        document.getElementById('item-size').textContent = selectedSize;
+        document.getElementById('item-quantity').textContent = quantity;
+        document.getElementById('total-price').textContent = totalPrice.toFixed(2);
+    </script>
+
+</body>
+</html>
