@@ -28,28 +28,6 @@
     margin-right: 20px;
 }
 
-.search-bar {
-    display: flex;
-    align-items: center;
-    background-color: #f5f5f5;
-    border-radius: 20px;
-    padding: 5px;
-    margin: 10px;
-}
-
-.search-bar input[type="text"] {
-    border: none;
-    border-radius: 20px;
-    padding: 10px;
-    margin-left: 10px;
-    font-size: 14px;
-    flex-grow: 1;
-}
-
-.search-bar input[type="text"]:focus {
-    outline: none;
-}
-
 .navbar-links {
     list-style: none;
     margin: 0;
@@ -59,7 +37,7 @@
 
 .navbar-links li {
     margin-right: 20px;
-    position: relative; 
+    position: relative;
 }
 
 .navbar-links li a {
@@ -103,61 +81,29 @@
     background-color: #cfa92c;
 }
 
-.dropdown {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: var(--theme);
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #f5f5f5;
+    border-radius: 20px;
+    padding: 5px;
+    margin: 10px;
 }
 
-.dropdown ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.dropdown li {
+.search-bar input[type="text"] {
+    border: none;
+    border-radius: 20px;
     padding: 10px;
+    margin-left: 10px;
+    font-size: 14px;
+    flex-grow: 1;
 }
 
-.dropdown li:last-child {
-    border-bottom: none;
+.search-bar input[type="text"]:focus {
+    outline: none;
 }
 
-.dropdown a {
-    text-decoration: none;
-    display: block;
-}
-
-.dropdown-link:hover .dropdown {
-    display: block;
-}
-
-@media only screen and (min-width: 768px) {
-    .logo img {
-        width: 200px;
-    }
-
-    .navbar-links {
-        display: flex;
-    }
-
-    .menu-toggle {
-        display: none;
-    }
-
-    .cart-panel {
-        width: 350px;
-        right: -350px;
-    }
-}
-
-
-
-
+/* Cart Panel */
 .cart-panel {
     position: fixed;
     top: 0;
@@ -189,9 +135,8 @@
 
 /* Responsive Design */
 @media only screen and (max-width: 768px) {
-    /* Navbar */
     .navbar {
-        flex-direction: column;
+        flex-direction: row;
         padding: 10px;
         position: relative;
     }
@@ -201,15 +146,17 @@
         margin-bottom: 10px;
     }
 
+    .social-icons,
     .search-bar {
-        width: 100%;
-        margin: 10px 0;
+        display: none;
     }
 
+    /* Navbar Links */
     .navbar-links {
-        display: none;
+        display: flex;
         width: 100%;
-        flex-direction: column;
+        align-items: center;
+        flex-direction: row;
         margin-top: 10px;
         padding: 0;
     }
@@ -225,88 +172,6 @@
         text-align: center;
     }
 
-    /* Toggle Navbar */
-    .menu-toggle {
-        display: block;
-        position: absolute;
-        top: 15px;
-        right: 20px;
-        cursor: pointer;
-    }
-
-    .menu-toggle.open .navbar-links {
-        display: flex;
-    }
-
-    .social-icons {
-        margin-top: 10px;
-        justify-content: center;
-    }
-
-    /* Cart Panel */
-    .cart-panel {
-        width: 100%;
-        right: -100%;
-        height: 100%;
-        transition: right 0.3s ease;
-    }
-
-    .cart-panel.show {
-        right: 0;
-    }
-
-    .cart-total {
-        padding: 10px;
-    }
-
-    /* Dropdown */
-    .dropdown {
-        position: static;
-        background-color: transparent;
-        box-shadow: none;
-    }
-
-    .dropdown-link:hover .dropdown {
-        display: none;
-    }
-
-    .dropdown ul {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .dropdown li {
-        padding: 8px;
-    }
-}
-
-@media only screen and (max-width: 480px) {
-    /* Navbar Links and Logo */
-    .navbar-links li {
-        margin-bottom: 8px;
-    }
-
-    .navbar-links li a {
-        font-size: 1.1em;
-        padding: 8px;
-    }
-
-    .logo img {
-        width: 150px;
-    }
-
-    /* Cart Panel */
-    .cart-panel {
-        width: 100%;
-        right: -100%;
-    }
-
-    /* Search Bar */
-    .search-bar input[type="text"] {
-        font-size: 12px;
-    }
-
-    /* Social Icons */
     .social-icons {
         margin-top: 10px;
         justify-content: center;
