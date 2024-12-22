@@ -84,3 +84,18 @@ window.addEventListener("load", () => {
     const loader = document.getElementById("loader-container"); 
     loader.style.display = "none";
 });
+
+// CART
+
+const openCartBtn = document.getElementById('openCartBtn');
+const cartPanel = document.getElementById('cartPanel');
+
+openCartBtn.addEventListener('click', () => {
+    cartPanel.classList.toggle('show');
+});
+
+window.addEventListener('click', function (e) {
+    if (!cartPanel.contains(e.target) && e.target !== openCartBtn) {
+        cartPanel.classList.remove('show');
+    }
+});
