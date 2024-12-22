@@ -1,6 +1,5 @@
 * {
     box-sizing: border-box;
-    
 }
 
 html {
@@ -21,7 +20,7 @@ html {
     --text-col: #2c2528;
 }
 
-/*  FADES   */
+/* FADES */
 
 @keyframes fadeInUp {
     from {
@@ -42,7 +41,7 @@ html {
     animation-delay: 0.5s;
 }
 
-/*  FADES   */
+/* FADES */
 
 body {
     margin: 0;
@@ -66,7 +65,7 @@ p {
     font-family: 'Play', sans-serif;
 }
 
-/*  INDEX   &   PRODUCTS    */
+/* INDEX & PRODUCTS */
 
 main {
     padding: 3em 0 0 0;
@@ -83,13 +82,12 @@ main,
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     grid-auto-rows: minmax(250px, auto);
-    gap: 0;
     max-width: 1250px;
     margin: 0 auto;
 }
 
 .item {
-    width: 250px;
+    width: 100%;
     height: 370px;
     text-align: center;
     position: relative;
@@ -291,7 +289,7 @@ main,
     background-color: #613b29;
 }
 
-/*    SHOP    */
+/* SHOP */
 
 .text-container.products {
     background-color: transparent;
@@ -327,7 +325,7 @@ main,
     color: var(--white-col);
 }
 
-/*  ABOUT   */
+/* ABOUT */
 
 .aboutText {
     color: var(--black-col);
@@ -368,5 +366,37 @@ main,
 
     .image-section {
         padding: 10px;
+    }
+
+    .item {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .heading {
+        font-size: 0.9em;
+    }
+
+    .text-container h2 {
+        font-size: 1.2em;
+    }
+
+    .text-container p {
+        font-size: 0.9em;
+    }
+
+    .get-in-touch h2 {
+        font-size: 1em;
+    }
+
+    .item {
+        width: 100%;
+        height: auto;
+    }
+
+    .item img {
+        height: 200px;
     }
 }
