@@ -58,8 +58,9 @@
 var canvas = document.getElementById('game');
 var context = canvas.getContext('2d');
 var grid = 16;
-var count = 0;
-var speed = 200;  // Initial speed
+var speed = 200;  // Initial speed in milliseconds
+var lastRender = 0;
+
 var snake = {
   x: 160,
   y: 160,
@@ -68,6 +69,7 @@ var snake = {
   cells: [],
   maxCells: 4
 };
+
 var apple = {
   x: 320,
   y: 320
@@ -77,11 +79,12 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-function loop() {
-  requestAnimationFrame(loop);
-  
-  if (++count < 5) return;
-  count = 0;
+function loop(timestamp) {
+  if (timestamp - lastRender < speed) {
+    requestAnimationFrame(loop);
+    return;
+  }
+  lastRender = timestamp;
 
   context.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -99,11 +102,11 @@ function loop() {
   if (snake.cells.length > snake.maxCells) snake.cells.pop();
 
   context.fillStyle = 'red';
-  context.fillRect(apple.x, apple.y, grid-1, grid-1);
+  context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
 
   context.fillStyle = 'green';
   snake.cells.forEach(function(cell, index) {
-    context.fillRect(cell.x, cell.y, grid-1, grid-1);
+    context.fillRect(cell.x, cell.y, grid - 1, grid - 1);
 
     if (cell.x === apple.x && cell.y === apple.y) {
       snake.maxCells++;
@@ -111,7 +114,7 @@ function loop() {
       apple.y = getRandomInt(0, 25) * grid;
 
       // Increase speed as snake grows
-      speed = Math.max(50, 200 - snake.maxCells * 2);  // Minimum speed is 50ms
+      speed = Math.max(50, 200 - snake.maxCells * 2); // Minimum speed is 50ms
     }
 
     for (var i = index + 1; i < snake.cells.length; i++) {
@@ -124,12 +127,12 @@ function loop() {
         snake.dy = 0;
         apple.x = getRandomInt(0, 25) * grid;
         apple.y = getRandomInt(0, 25) * grid;
+        speed = 200; // Reset speed
       }
     }
   });
 
-  // Speed up the game by reducing delay based on snake's size
-  setTimeout(loop, speed);
+  requestAnimationFrame(loop);
 }
 
 // Keyboard Controls
@@ -137,16 +140,13 @@ document.addEventListener('keydown', function(e) {
   if (e.which === 37 && snake.dx === 0) {
     snake.dx = -grid;
     snake.dy = 0;
-  }
-  else if (e.which === 38 && snake.dy === 0) {
+  } else if (e.which === 38 && snake.dy === 0) {
     snake.dy = -grid;
     snake.dx = 0;
-  }
-  else if (e.which === 39 && snake.dx === 0) {
+  } else if (e.which === 39 && snake.dx === 0) {
     snake.dx = grid;
     snake.dy = 0;
-  }
-  else if (e.which === 40 && snake.dy === 0) {
+  } else if (e.which === 40 && snake.dy === 0) {
     snake.dy = grid;
     snake.dx = 0;
   }
