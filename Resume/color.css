@@ -189,6 +189,10 @@ a:hover {
     animation-delay: 0.7s;
 }
 
+.section:nth-child(5) {
+    animation-delay: 0.9s;
+}
+
 @keyframes fadeIn {
     to {
         opacity: 1;
