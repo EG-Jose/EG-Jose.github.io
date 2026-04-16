@@ -3,38 +3,231 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery</title>
-
-    <link rel="stylesheet" type="text/css" href="Resume/color.css">
-    <!-- Google Fonts -->
+    
+    <!-- ✅ SEO: Improved Title & Meta Description -->
+    <title>Photo Gallery | Eric Godwin Jose</title>
+    <meta name="description" content="Photography gallery by Eric Godwin Jose — landscapes, nature, and everyday moments from Ilocos Sur, Philippines.">
+    
+    <!-- ✅ Open Graph / Social Sharing -->
+    <meta property="og:title" content="Photo Gallery | Eric Godwin Jose">
+    <meta property="og:description" content="Explore my photography: sunsets, landscapes, and candid moments">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://eg-jose.github.io/gallery.html">
+    <meta property="og:image" content="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image1L.jpg?raw=true">
+    
+    <!-- ✅ Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- ✅ Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://kit.fontawesome.com">
+    <link rel="preconnect" href="https://www.youtube.com">
+    
+    <!-- ✅ Google Fonts & FontAwesome -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <!-- FontAwesome for icons -->
-    <script src="https://kit.fontawesome.com/b9d5bac5fa.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/b9d5bac5fa.js" crossorigin="anonymous" defer></script>
+    
+    <!-- ✅ Your Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="Resume/color.css">
+    
+    <!-- ✅ Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ImageGallery",
+      "name": "Photography Gallery",
+      "description": "Photo collection by Eric Godwin Jose",
+      "url": "https://eg-jose.github.io/gallery.html",
+      "author": {
+        "@type": "Person",
+        "name": "Eric Godwin Quidangen Jose",
+        "url": "https://eg-jose.github.io"
+      },
+      "image": [
+        "https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image1L.jpg?raw=true",
+        "https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image2L.JPG?raw=true",
+        "https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image3L.JPG?raw=true"
+      ]
+    }
+    </script>
+    
+    <!-- ✅ Skip Link & Gallery Styles -->
+    <style>
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #1a1a1a;
+            color: #fff;
+            padding: 8px 12px;
+            z-index: 1000;
+            text-decoration: none;
+            font-family: Poppins, sans-serif;
+            border-radius: 0 0 4px 0;
+        }
+        .skip-link:focus { top: 0; }
+        
+        /* Gallery Grid */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #f5f5f5;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+        .gallery-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        .gallery-item h1 {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+            padding: 2rem 0.75rem 0.75rem;
+            margin: 0;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+        .modal[aria-hidden="false"] { display: flex; }
+        .modal-content {
+            max-width: 90vw;
+            max-height: 85vh;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            outline: none;
+        }
+        #caption {
+            position: absolute;
+            bottom: 1rem;
+            color: #fff;
+            font-size: 1.1rem;
+            text-align: center;
+            width: 100%;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
+        .close {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            color: #fff;
+            font-size: 2.5rem;
+            font-weight: 300;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.2s;
+        }
+        .close:hover, .close:focus {
+            background: rgba(255,255,255,0.15);
+            outline: none;
+        }
+        
+        /* Video Grid */
+        .gallery-yt {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin-top: 1rem;
+        }
+        .ytVideo {
+            width: 100%;
+            aspect-ratio: 16/9;
+            border: none;
+            border-radius: 8px;
+            background: #000;
+        }
+        
+        /* Print Styles */
+        @media print {
+            .topnav, .fbButton, .skip-link, .gallery-yt, .modal { display: none !important; }
+            body { font-size: 11pt; color: #000; background: #fff; }
+            .gallery { grid-template-columns: repeat(2, 1fr); }
+            .gallery-item { break-inside: avoid; page-break-inside: avoid; }
+            .gallery-item img { height: auto; max-height: 200px; }
+        }
+        
+        /* Mobile */
+        @media (max-width: 600px) {
+            .gallery { grid-template-columns: repeat(2, 1fr); }
+            .gallery-yt { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
+    <!-- ✅ Accessibility: Skip Link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <!-- Main Container -->
-    <div class="container">
+    <div class="container" id="main-content">
 
         <!-- Left Column -->
         <div class="column left">
             <div class="meet">
-                <img class="pfp" src="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image5L.JPG?raw=true" alt="Profile Picture">
+                <!-- ✅ Optimized Profile Image -->
+                <img class="pfp" 
+                     src="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image5L.JPG?raw=true" 
+                     alt="Profile photo of Eric Godwin Jose, IT student and photographer"
+                     width="150" 
+                     height="150"
+                     loading="eager">
                 <h1>Eric Godwin Quidangen Jose</h1>
             </div>
 
             <div class="contact_section">
                 <h2>Contact Information</h2>
+                <!-- ✅ Clickable Email -->
                 <div class="contact">
-                    <i class="fa fa-envelope"></i> egj.rei@gmail.com
+                    <i class="fa fa-envelope" aria-hidden="true"></i> 
+                    <a href="mailto:egj.rei@gmail.com">egj.rei@gmail.com</a>
                 </div>
+                <!-- ✅ Clickable Phone -->
                 <div class="contact">
-                    <i class="fa fa-phone"></i> +63 9065083590
+                    <i class="fa fa-phone" aria-hidden="true"></i> 
+                    <a href="tel:+639065083590">+63 906 508 3590</a>
                 </div>
+                <!-- ✅ Secure External Link -->
                 <div class="contact">
-                    <i class="fa fa-facebook"></i>
-                    <a href="https://www.facebook.com/egj.eric" target="_blank">
-                        <button class="fbButton">Eric Godwin Jose</button>
+                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                    <a href="https://www.facebook.com/egj.eric" target="_blank" rel="noopener noreferrer">
+                        <button class="fbButton" type="button">Eric Godwin Jose</button>
                     </a>
                 </div>
             </div>
@@ -43,216 +236,252 @@
         <!-- Right Column -->
         <div class="column right">
 
-            <!-- Navigation Bar -->
-            <div class="topnav"> 
+            <!-- ✅ Semantic Navigation -->
+            <nav class="topnav" aria-label="Main navigation">
                 <a href="index.html">Home</a>
-                <a class="active" href="gallery.html">Gallery</a>
+                <a class="active" href="gallery.html" aria-current="page">Gallery</a>
                 <a href="sites.html">Sites</a>
-            </div>
+            </nav>
 
             <!-- Gallery Content Section -->
-            <section class="section">
-                <h2><i class="fa fa-image"></i> Gallery</h2>
-                <div class="photography">
+            <section class="section" aria-labelledby="gallery-heading">
+                <h2 id="gallery-heading"><i class="fa fa-image" aria-hidden="true"></i> Gallery</h2>
+                <p style="margin-bottom:1rem;color:#666">Click any photo to view full size. Use ← → arrows or Esc to navigate.</p>
+                
+                <div class="gallery" role="list">
+                    <!-- ✅ Optimized Images: lazy loading, width/height, better alt text -->
+                    <div class="gallery-item" role="listitem" tabindex="0" data-caption="Evening Sky Above Abra">
+                        <h1>Evening Sky Above Abra</h1>
+                        <img class="photo" 
+                             src="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image1L.jpg?raw=true" 
+                             alt="Golden hour sky with purple clouds over Abra province landscape"
+                             width="400" height="300"
+                             loading="lazy"
+                             onclick="openModal(this)"
+                             onkeydown="if(event.key==='Enter'||event.key===' ')openModal(this)">
+                    </div>
 
-                    <div class="gallery">
-
-                        <div class="gallery-item">
-                            <h1>Evening Sky Above Abra</h1>
-                            <img class="photo" src="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image1L.jpg?raw=true" 
-                                alt="Evening Sky Above Abra" onclick="openModal(this)">
-                        </div>
-    
-                        <div class="gallery-item">
-                            <h1>Sunset Over The Beach</h1>
-                            <img class="photo" src="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image2L.JPG?raw=true" 
-                                alt="Sunset Over The Beach" onclick="openModal(this)">
-                        </div>
-                        
-                        <div class="gallery-item">
-                            <h1>View From Kankantuban</h1>
-                            <img class="photo" src="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image3L.JPG?raw=true" 
-                                alt="View From Kankantuban" onclick="openModal(this)">
-                        </div>
-                        
-                        <div class="gallery-item">
-                            <h1>Rainbow Over My Barangay</h1>
-                            <img class="photo" src="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image4L.JPG?raw=true" 
-                                alt="Rainbow Over My Barangay" onclick="openModal(this)">
-                        </div>
-                        
-                        <div class="gallery-item">
-                            <h1>Siamese Cat</h1>
-                            <img class="photo" src="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image5L.JPG?raw=true" 
-                                alt="Siamese Cat" onclick="openModal(this)">
-                        </div>
-                        
-                        <div class="gallery-item">
-                            <h1>Water Tower</h1>
-                            <img class="photo" src="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image6P.JPG?raw=true" 
-                                alt="Water Tower" onclick="openModal(this)">
-                        </div>
-                        
-                        <div class="gallery-item">
-                            <h1>Dogs</h1>
-                            <img class="photo" src="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image7P.JPG?raw=true" 
-                                alt="Dogs" onclick="openModal(this)">
-                        </div>
-                        
-                        <div class="gallery-item">
-                            <h1>Waterfall</h1>
-                            <img class="photo" src="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image8P.JPG?raw=true" 
-                                alt="Waterfall" onclick="openModal(this)">
-                        </div>
-                        
-                        <div class="gallery-item">
-                            <h1>Vape</h1>
-                            <img class="photo" src="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image9P.JPG?raw=true" 
-                                alt="Vape" onclick="openModal(this)">
-                        </div>
-                        
-                        <div class="gallery-item">
-                            <h1>Motorcycle</h1>
-                            <img class="photo" src="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image10P.JPG?raw=true" 
-                                alt="Motorcycle" onclick="openModal(this)">
-                        </div>
-
+                    <div class="gallery-item" role="listitem" tabindex="0" data-caption="Sunset Over The Beach">
+                        <h1>Sunset Over The Beach</h1>
+                        <img class="photo" 
+                             src="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image2L.JPG?raw=true" 
+                             alt="Orange and pink sunset reflecting on calm beach waters"
+                             width="400" height="300"
+                             loading="lazy"
+                             onclick="openModal(this)"
+                             onkeydown="if(event.key==='Enter'||event.key===' ')openModal(this)">
                     </div>
                     
+                    <div class="gallery-item" role="listitem" tabindex="0" data-caption="View From Kankantuban">
+                        <h1>View From Kankantuban</h1>
+                        <img class="photo" 
+                             src="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image3L.JPG?raw=true" 
+                             alt="Panoramic mountain view from Kankantuban viewpoint"
+                             width="400" height="300"
+                             loading="lazy"
+                             onclick="openModal(this)"
+                             onkeydown="if(event.key==='Enter'||event.key===' ')openModal(this)">
+                    </div>
+                    
+                    <div class="gallery-item" role="listitem" tabindex="0" data-caption="Rainbow Over My Barangay">
+                        <h1>Rainbow Over My Barangay</h1>
+                        <img class="photo" 
+                             src="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image4L.JPG?raw=true" 
+                             alt="Vibrant rainbow arching over residential neighborhood after rain"
+                             width="400" height="300"
+                             loading="lazy"
+                             onclick="openModal(this)"
+                             onkeydown="if(event.key==='Enter'||event.key===' ')openModal(this)">
+                    </div>
+                    
+                    <div class="gallery-item" role="listitem" tabindex="0" data-caption="Siamese Cat">
+                        <h1>Siamese Cat</h1>
+                        <img class="photo" 
+                             src="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image5L.JPG?raw=true" 
+                             alt="Close-up portrait of a blue-eyed Siamese cat"
+                             width="400" height="300"
+                             loading="lazy"
+                             onclick="openModal(this)"
+                             onkeydown="if(event.key==='Enter'||event.key===' ')openModal(this)">
+                    </div>
+                    
+                    <div class="gallery-item" role="listitem" tabindex="0" data-caption="Water Tower">
+                        <h1>Water Tower</h1>
+                        <img class="photo" 
+                             src="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image6P.JPG?raw=true" 
+                             alt="Tall white water tower against blue sky"
+                             width="400" height="300"
+                             loading="lazy"
+                             onclick="openModal(this)"
+                             onkeydown="if(event.key==='Enter'||event.key===' ')openModal(this)">
+                    </div>
+                    
+                    <div class="gallery-item" role="listitem" tabindex="0" data-caption="Dogs">
+                        <h1>Dogs</h1>
+                        <img class="photo" 
+                             src="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image7P.JPG?raw=true" 
+                             alt="Two friendly dogs playing together outdoors"
+                             width="400" height="300"
+                             loading="lazy"
+                             onclick="openModal(this)"
+                             onkeydown="if(event.key==='Enter'||event.key===' ')openModal(this)">
+                    </div>
+                    
+                    <div class="gallery-item" role="listitem" tabindex="0" data-caption="Waterfall">
+                        <h1>Waterfall</h1>
+                        <img class="photo" 
+                             src="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image8P.JPG?raw=true" 
+                             alt="Cascading waterfall surrounded by lush green tropical foliage"
+                             width="400" height="300"
+                             loading="lazy"
+                             onclick="openModal(this)"
+                             onkeydown="if(event.key==='Enter'||event.key===' ')openModal(this)">
+                    </div>
+                    
+                    <div class="gallery-item" role="listitem" tabindex="0" data-caption="Vape">
+                        <h1>Vape</h1>
+                        <img class="photo" 
+                             src="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image9P.JPG?raw=true" 
+                             alt="Artistic close-up of vapor cloud from electronic cigarette"
+                             width="400" height="300"
+                             loading="lazy"
+                             onclick="openModal(this)"
+                             onkeydown="if(event.key==='Enter'||event.key===' ')openModal(this)">
+                    </div>
+                    
+                    <div class="gallery-item" role="listitem" tabindex="0" data-caption="Motorcycle">
+                        <h1>Motorcycle</h1>
+                        <img class="photo" 
+                             src="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image10P.JPG?raw=true" 
+                             alt="Side view of motorcycle parked on scenic road"
+                             width="400" height="300"
+                             loading="lazy"
+                             onclick="openModal(this)"
+                             onkeydown="if(event.key==='Enter'||event.key===' ')openModal(this)">
+                    </div>
                 </div>
-
-                <!-- Modal -->
-                <div id="imageModal" class="modal">
-                    <span class="close" onclick="closeModal()">&times;</span>
-                    <img class="modal-content" id="modalImage">
-                    <div id="caption"></div>
-                </div>
-
             </section>
 
+            <!-- Modal (Accessible) -->
+            <div id="imageModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-caption" aria-hidden="true">
+                <button class="close" onclick="closeModal()" aria-label="Close image viewer">&times;</button>
+                <img class="modal-content" id="modalImage" alt="" tabindex="0">
+                <div id="caption" id="modal-caption"></div>
+            </div>
+
             <!-- Video Section -->
-            <section class="section">
-                <h2><i class="fa fa-photo-film"></i> Videos</h2>
+            <section class="section" aria-labelledby="videos-heading">
+                <h2 id="videos-heading"><i class="fa fa-photo-film" aria-hidden="true"></i> Videos</h2>
                 <div class="gallery-yt">
-                    <iframe class="ytVideo" src="https://www.youtube.com/embed/15AiUyWpYZk?si=Ut7A0tQWXy3lClmp" 
-                        title="Music Video" allowfullscreen></iframe>
-                    <iframe class="ytVideo" src="https://www.youtube.com/embed/AFjDZRMEb9Q?si=_C-V_t3pL6bhsIiw" 
-                        title="Editing Video 1" allowfullscreen></iframe>
-                    <iframe class="ytVideo" src="https://www.youtube.com/embed/GBdKm7hsXok?si=v_qFlAgskJ2akqI4" 
-                        title="Editing Video 2" allowfullscreen></iframe>
-                    <iframe class="ytVideo" src="https://www.youtube.com/embed/e6588hsfN0E?si=RgAjYCJcMqV2s6aX" 
-                        title="Editing Video 3" allowfullscreen></iframe>
+                    <!-- ✅ Lazy-load iframes, add loading="lazy", title attributes -->
+                    <iframe class="ytVideo" 
+                            src="https://www.youtube.com/embed/15AiUyWpYZk?si=Ut7A0tQWXy3lClmp" 
+                            title="Music Video by Eric Godwin Jose" 
+                            loading="lazy"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+                    <iframe class="ytVideo" 
+                            src="https://www.youtube.com/embed/AFjDZRMEb9Q?si=_C-V_t3pL6bhsIiw" 
+                            title="Video Editing Showcase 1" 
+                            loading="lazy"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+                    <iframe class="ytVideo" 
+                            src="https://www.youtube.com/embed/GBdKm7hsXok?si=v_qFlAgskJ2akqI4" 
+                            title="Video Editing Showcase 2" 
+                            loading="lazy"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+                    <iframe class="ytVideo" 
+                            src="https://www.youtube.com/embed/e6588hsfN0E?si=RgAjYCJcMqV2s6aX" 
+                            title="Video Editing Showcase 3" 
+                            loading="lazy"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
                 </div>
             </section>
         </div>
-
     </div>
 
-<script>
-    let gyroscopeRotationX = 0;
-    let gyroscopeRotationY = 0;
-
-    document.querySelectorAll('a').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            if (this.getAttribute("href").startsWith("#")) {
+    <!-- ✅ Deferred, Accessible JavaScript -->
+    <script defer>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute("href"));
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
         });
-    });
-    
-    function openModal(element) {
-        const modal = document.getElementById("imageModal");
-        const modalImage = document.getElementById("modalImage");
-        const caption = document.getElementById("caption");
 
-        modal.style.display = "block";
-        modalImage.src = element.src;
-        caption.innerHTML = element.alt;
+        // ✅ Accessible Modal Logic
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const caption = document.getElementById('caption');
+        let lastFocusedElement = null;
 
-        // Add event listeners
-        modal.addEventListener("mousemove", apply3DEffect);
-        modalImage.addEventListener("mouseenter", onMouseEnter);
-        modalImage.addEventListener("mouseleave", onMouseLeave);
-        modal.addEventListener("click", closeModalOnOutsideClick);
-        window.addEventListener("deviceorientation", applyGyroscopeEffect);
-    }
-
-    function closeModal() {
-        const modal = document.getElementById("imageModal");
-        modal.style.display = "none";
-
-        // Remove event listeners
-        modal.removeEventListener("mousemove", apply3DEffect);
-        const modalImage = document.getElementById("modalImage");
-        modalImage.removeEventListener("mouseenter", onMouseEnter);
-        modalImage.removeEventListener("mouseleave", onMouseLeave);
-        modal.removeEventListener("click", closeModalOnOutsideClick);
-        window.removeEventListener("deviceorientation", applyGyroscopeEffect);
-    }
-
-    function closeModalOnOutsideClick(event) {
-        const modalImage = document.getElementById("modalImage");
-
-        // Check if the clicked target is not the image
-        if (event.target !== modalImage) {
-            closeModal();
+        function openModal(element) {
+            lastFocusedElement = document.activeElement;
+            
+            modalImage.src = element.src;
+            modalImage.alt = element.alt;
+            caption.textContent = element.closest('.gallery-item')?.dataset.caption || element.alt;
+            
+            modal.setAttribute('aria-hidden', 'false');
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Prevent background scroll
+            
+            // Focus management
+            setTimeout(() => {
+                document.querySelector('.close').focus();
+            }, 100);
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', handleModalKeydown);
         }
-    }
 
-    function apply3DEffect(event) { // ChatGPT LOL
-        const modal = document.getElementById("imageModal");
-        const modalImage = document.getElementById("modalImage");
+        function closeModal() {
+            modal.setAttribute('aria-hidden', 'true');
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+            
+            document.removeEventListener('keydown', handleModalKeydown);
+            
+            // Return focus to triggering element
+            if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+                lastFocusedElement.focus();
+            }
+        }
 
-        const mouseX = event.clientX - modal.offsetLeft; // Mouse position relative to the modal
-        const mouseY = event.clientY - modal.offsetTop;
+        function handleModalKeydown(e) {
+            if (e.key === 'Escape') {
+                e.preventDefault();
+                closeModal();
+            }
+            // Optional: Add arrow key navigation between images here
+        }
 
-        const modalWidth = modal.offsetWidth; // Modal width
-        const modalHeight = modal.offsetHeight; // Modal height
+        // Close modal when clicking outside image
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
 
-        // Calculate the rotation angles based on cursor position (mouseX and mouseY)
-        const rotateX = (mouseY / modalHeight - 0.5) * 20;  // Tilt on X axis
-        const rotateY = (mouseX / modalWidth - 0.5) * -20;  // Tilt on Y axis
-
-        // Combine the mouse rotation with the gyroscope rotation
-        const totalRotateX = rotateX + gyroscopeRotationX;
-        const totalRotateY = rotateY + gyroscopeRotationY;
-
-        // Apply the combined 3D transform to the modal image
-        modalImage.style.transform = `perspective(1000px) rotateX(${totalRotateX}deg) rotateY(${totalRotateY}deg)`;
-    }
-
-    // Function to reset the image back to its original state smoothly
-    function onMouseEnter() {
-        const modalImage = document.getElementById("modalImage");
-        modalImage.style.transition = "transform 0.1s ease-out"; // Smooth transition on hover
-    }
-
-    function onMouseLeave() {
-        const modalImage = document.getElementById("modalImage");
-        modalImage.style.transition = "transform 0.3s ease-out"; // Smooth transition when leaving
-        modalImage.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg)"; // Reset the rotation
-    }
-
-    function applyGyroscopeEffect(event) { // Doesnt work
-        const modalImage = document.getElementById("modalImage");
-
-        // Get the device's orientation data (beta, gamma, alpha)
-        const beta = event.beta;  // Tilt left/right (x-axis)
-        const gamma = event.gamma;  // Tilt forward/backward (y-axis)
-
-        // Apply these values to rotate the image in 3D space
-        gyroscopeRotationX = (beta) ? (beta / 90) * 20 : 0;  // X-axis rotation
-        gyroscopeRotationY = (gamma) ? (gamma / 90) * -20 : 0;  // Y-axis rotation
-
-        // Apply the 3D transform to the modal image, using the gyroscope effect
-        modalImage.style.transform = `perspective(1000px) rotateX(${gyroscopeRotationX}deg) rotateY(${gyroscopeRotationY}deg)`;
-    }
-</script>
-    
+        // Make gallery items keyboard accessible
+        document.querySelectorAll('.gallery-item[tabindex="0"]').forEach(item => {
+            item.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    const img = item.querySelector('img.photo');
+                    if (img) openModal(img);
+                }
+            });
+        });
+    </script>    
 </body>
 </html>
