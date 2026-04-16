@@ -3,37 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sites</title>
-
-    <link rel="stylesheet" type="text/css" href="Resume/color.css">
-    <!-- Google Fonts -->
+    
+    <!-- SEO: Improved Title & Meta Description -->
+    <title>Projects & Sites | Eric Godwin Jose</title>
+    <meta name="description" content="Portfolio of web projects by Eric Godwin Jose — Snake game, Mobile Gitz, Coffee Please, and more. Built with HTML, CSS, JavaScript, and PHP.">
+    
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:title" content="Projects & Sites | Eric Godwin Jose">
+    <meta property="og:description" content="Explore my web development projects and experiments">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://eg-jose.github.io/sites.html">
+    <meta property="og:image" content="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image5L.JPG?raw=true">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://kit.fontawesome.com">
+    
+    <!-- Google Fonts & FontAwesome -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <!-- FontAwesome for icons -->
     <script src="https://kit.fontawesome.com/b9d5bac5fa.js" crossorigin="anonymous"></script>
+    
+    <link rel="stylesheet" type="text/css" href="Resume/color.css">
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Projects & Sites",
+      "description": "Portfolio of web projects by Eric Godwin Jose",
+      "url": "https://eg-jose.github.io/sites.html",
+      "author": {
+        "@type": "Person",
+        "name": "Eric Godwin Quidangen Jose",
+        "url": "https://eg-jose.github.io"
+      }
+    }
+    </script>
+    
+    <!-- Skip Link & Print Styles -->
+    <style>
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #1a1a1a;
+            color: #fff;
+            padding: 8px 12px;
+            z-index: 1000;
+            text-decoration: none;
+            font-family: Poppins, sans-serif;
+            border-radius: 0 0 4px 0;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+        .project-note {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        .project-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        .project-list li {
+            margin-bottom: 0.75rem;
+        }
+        .project-list a {
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .project-list a:hover {
+            text-decoration: underline;
+        }
+        .project-desc {
+            margin-left: 1.5rem;
+            font-size: 0.85rem;
+            color: #555;
+            margin-top: 0.25rem;
+        }
+        .section-subtitle {
+            font-size: 1.1rem;
+            margin: 1.5rem 0 0.75rem;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        @media print {
+            .topnav, .fbButton, .skip-link { display: none !important; }
+            body { font-size: 11pt; color: #000; background: #fff; }
+            a { text-decoration: none; color: #000; }
+            .container { display: block; width: 100%; }
+            .column { width: 100% !important; float: none; margin: 0 !important; }
+            .project-desc::before {
+                content: "— ";
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Accessibility: Skip Link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <!-- Main Container -->
-    <div class="container">
+    <div class="container" id="main-content">
 
         <!-- Left Column -->
         <div class="column left">
             <div class="meet">
-                <img class="pfp" src="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image5L.JPG?raw=true" alt="Profile Picture">
+                <!-- Optimized Image -->
+                <img class="pfp" 
+                     src="https://github.com/EG-Jose/EG-Jose.github.io/blob/main/Resume/images,videos/!image5L.JPG?raw=true" 
+                     alt="Profile photo of Eric Godwin Jose, IT student"
+                     width="150" 
+                     height="150"
+                     loading="eager">
                 <h1>Eric Godwin Quidangen Jose</h1>
             </div>
 
             <div class="contact_section">
                 <h2>Contact Information</h2>
+                <!-- Clickable Email -->
                 <div class="contact">
-                    <i class="fa fa-envelope"></i> egj.rei@gmail.com
+                    <i class="fa fa-envelope"></i> 
+                    <a href="mailto:egj.rei@gmail.com">egj.rei@gmail.com</a>
                 </div>
+                <!-- Clickable Phone -->
                 <div class="contact">
-                    <i class="fa fa-phone"></i> +63 9065083590
+                    <i class="fa fa-phone"></i> 
+                    <a href="tel:+639065083590">+63 906 508 3590</a>
                 </div>
+                <!-- Secure External Link -->
                 <div class="contact">
                     <i class="fa fa-facebook"></i>
-                    <a href="https://www.facebook.com/egj.eric" target="_blank">
+                    <a href="https://www.facebook.com/egj.eric" target="_blank" rel="noopener noreferrer">
                         <button class="fbButton">Eric Godwin Jose</button>
                     </a>
                 </div>
@@ -43,67 +153,96 @@
         <!-- Right Column -->
         <div class="column right">
 
-            <!-- Navigation Bar -->
-            <div class="topnav">
+            <!-- Semantic Navigation -->
+            <nav class="topnav" aria-label="Main navigation">
                 <a href="index.html">Home</a>
                 <a href="gallery.html">Gallery</a>
-                <a class="active" href="sites.html">Sites</a>
-            </div>
+                <a class="active" href="sites.html" aria-current="page">Sites</a>
+            </nav>
 
             <section class="section">
                 <h2><i class="fa-solid fa-code"></i> Projects</h2>
-                <p style="text-align: left;">Here is where I'll put my projects.    <a href="https://github.com/EG-Jose/EG-Jose.github.io">Github Repository</a></p>
-                <p style="text-align: left;">Note: The one with 'PHP' will not open the website but instead will navigate to the folder they're in within the repository.</p>
+                <p class="project-note">
+                    Here is where I showcase my projects. 
+                    <a href="https://github.com/EG-Jose/EG-Jose.github.io" target="_blank" rel="noopener noreferrer">View my GitHub Repository</a>
+                </p>
+                <p class="project-note">
+                    <strong>Note:</strong> Links labeled "PHP" navigate to the source code folder on GitHub (not a live demo), as they require a PHP server to run.
+                </p>
             </section>
 
             <section class="section">    
-                <h3>Websites</h3>
-                    <ul>
-                        <li><a href="https://eg-jose.github.io/Snake/" target="_blank">Snake</a></li>
-                            <p style="margin-left: 1rem;font-size: 0.75rem;">A snake game (2022)</p>
-                        <!-- <li><a href="https://eg-jose.github.io/Coffee Please/" target="_blank">Coffee Please</a></li>
-                            <p style="margin-left: 1rem;font-size: 0.75rem;">The first version of Coffee Please</p> -->
-                        <li><a href="https://eg-jose.github.io/Mobile Gitz/" target="_blank">Mobile Gitz</a></li>
-                            <p style="margin-left: 1rem;font-size: 0.75rem;">An index and news website about new mobile devices (2023)</p>
-                        <li><a href="https://eg-jose.github.io/CoffeePleaseV1.2/" target="_blank">Coffee Please (V1.2)</a></li>
-                            <p style="margin-left: 1rem;font-size: 0.75rem;">Redesign of Coffee Please V1.1 for it to be a static website, there may be things that are missing :) (2024)</p>
-                    </ul>
+                <h3 class="section-subtitle"><i class="fa fa-globe"></i> Live Websites</h3>
+                <ul class="project-list">
+                    <li>
+                        <a href="https://eg-jose.github.io/Snake/" target="_blank" rel="noopener noreferrer">🐍 Snake Game</a>
+                        <p class="project-desc">A classic snake game built with HTML/CSS/JavaScript (2022)</p>
+                    </li>
+                    <li>
+                        <a href="https://eg-jose.github.io/Mobile%20Gitz/" target="_blank" rel="noopener noreferrer">📱 Mobile Gitz</a>
+                        <p class="project-desc">News & index website for mobile devices (2023)</p>
+                    </li>
+                    <li>
+                        <a href="https://eg-jose.github.io/CoffeePleaseV1.2/" target="_blank" rel="noopener noreferrer">☕ Coffee Please (V1.2)</a>
+                        <p class="project-desc">Static redesign of Coffee Please — minor features may be missing (2024)</p>
+                    </li>
+                </ul>
 
-                    <ul>PHP
-                        <li><a href="https://github.com/EG-Jose/EG-Jose.github.io/tree/main/CoffeePleaseV1.1/" target="_blank">Coffee Please (V1.1) PHP</a></li>
-                            <p style="margin-left: 1rem;font-size: 0.75rem;">A better and cleaner version of Coffee Please (2023)</p>
-                        <li><a href="https://github.com/EG-Jose/EG-Jose.github.io/tree/main/transacSystem" target="_blank">Transaction System PHP</a></li>
-                            <p style="margin-left: 1rem;font-size: 0.75rem;">Mainly a showcase of a Transaction System (2023)</p>
-                    </ul>
+                <h3 class="section-subtitle"><i class="fa fa-brands fa-php"></i> PHP Projects (Source Code)</h3>
+                <ul class="project-list">
+                    <li>
+                        <a href="https://github.com/EG-Jose/EG-Jose.github.io/tree/main/CoffeePleaseV1.1/" target="_blank" rel="noopener noreferrer">☕ Coffee Please (V1.1) — PHP</a>
+                        <p class="project-desc">Cleaner PHP version with improved structure (2023)</p>
+                    </li>
+                    <li>
+                        <a href="https://github.com/EG-Jose/EG-Jose.github.io/tree/main/transacSystem" target="_blank" rel="noopener noreferrer">💳 Transaction System — PHP</a>
+                        <p class="project-desc">Showcase of a PHP-based transaction management system (2023)</p>
+                    </li>
+                </ul>
             </section>
 
             <section class="section">
-                <h3>Others</h3>
-                    <ul>
-                        <li><a href="https://eg-jose.github.io/MQ/MQ1/JOSE_ERIC_GODWIN_MQ1.html" target="_blank">Midterm Quiz 1 (2023)</a></li>
-                        <li><a href="https://eg-jose.github.io/MQ/MQ2/JOSE, EG_MQ2.html" target="_blank">Midterm Quiz 2 (2023)</a></li>
-                        <li><a href="https://eg-jose.github.io/color/" target="_blank">Color Picker (2024)</a></li>
-                        <li><a href="https://eg-jose.github.io/logsign/" target="_blank">Login/Signup Style (2023)</a></li>
-                    </ul>
+                <h3 class="section-subtitle"><i class="fa fa-folder-open"></i> Others / Experiments</h3>
+                <ul class="project-list">
+                    <li>
+                        <a href="https://eg-jose.github.io/MQ/MQ1/JOSE_ERIC_GODWIN_MQ1.html" target="_blank" rel="noopener noreferrer">📝 Midterm Quiz 1</a>
+                        <p class="project-desc">Academic assignment (2023)</p>
+                    </li>
+                    <li>
+                        <a href="https://eg-jose.github.io/MQ/MQ2/JOSE,%20EG_MQ2.html" target="_blank" rel="noopener noreferrer">📝 Midterm Quiz 2</a>
+                        <p class="project-desc">Academic assignment (2023)</p>
+                    </li>
+                    <li>
+                        <a href="https://eg-jose.github.io/color/" target="_blank" rel="noopener noreferrer">🎨 Color Picker Tool</a>
+                        <p class="project-desc">Interactive color selection utility (2024)</p>
+                    </li>
+                    <li>
+                        <a href="https://eg-jose.github.io/logsign/" target="_blank" rel="noopener noreferrer">🔐 Login/Signup UI</a>
+                        <p class="project-desc">Modern authentication interface design (2023)</p>
+                    </li>
+                </ul>
             </section>
         </div>
-
     </div>
 
-<script>
-    document.querySelectorAll('a').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            if (this.getAttribute("href").startsWith("#")) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute("href"));
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
+    <!-- Deferred Script for Smooth Scroll -->
+    <script defer>
+        document.querySelectorAll('a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute("href");
+                if (href && href.startsWith("#")) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
         });
-    });
-</script>
-    
+    </script>    
+
 </body>
 </html>
